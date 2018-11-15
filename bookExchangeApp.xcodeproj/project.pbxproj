@@ -15,6 +15,8 @@
 		C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */; };
 		C72C5F89219D8E7E00D3BA08 /* bookExchangeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F88219D8E7E00D3BA08 /* bookExchangeAppTests.swift */; };
 		C72C5F94219D8E7E00D3BA08 /* bookExchangeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F93219D8E7E00D3BA08 /* bookExchangeAppUITests.swift */; };
+		C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */; };
+		C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		C72C5F8F219D8E7E00D3BA08 /* bookExchangeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookExchangeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72C5F93219D8E7E00D3BA08 /* bookExchangeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookExchangeAppUITests.swift; sourceTree = "<group>"; };
 		C72C5F95219D8E7E00D3BA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
+		C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			children = (
 				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
 				C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */,
+				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
+				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
 				C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */,
 				C72C5F77219D8E7B00D3BA08 /* Main.storyboard */,
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
@@ -261,7 +267,9 @@
 			files = (
 				C72C5F76219D8E7B00D3BA08 /* SecondViewController.swift in Sources */,
 				C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */,
+				C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */,
 				C72C5F74219D8E7B00D3BA08 /* FirstViewController.swift in Sources */,
+				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
