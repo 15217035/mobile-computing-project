@@ -5,18 +5,22 @@
 //  Created by 15217035 on 15/11/2018.
 //  Copyright © 2018 comp4097proj. All rights reserved.
 //
-
 import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+import Firebase
+    
+    @UIApplicationMain
+    class AppDelegate: UIResponder, UIApplicationDelegate {
+        
+        var window: UIWindow?
+        
+        func application(_ application: UIApplication,
+                         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
+            -> Bool {
+                
+                //...
+                FirebaseApp.configure()
+                return true
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -42,5 +46,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-}
 
