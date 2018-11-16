@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */; };
-		C72C5F74219D8E7B00D3BA08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */; };
 		C72C5F76219D8E7B00D3BA08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */; };
 		C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F77219D8E7B00D3BA08 /* Main.storyboard */; };
 		C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */; };
@@ -17,6 +16,8 @@
 		C72C5F94219D8E7E00D3BA08 /* bookExchangeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F93219D8E7E00D3BA08 /* bookExchangeAppUITests.swift */; };
 		C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */; };
 		C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */; };
+		CDBD644F219E6A8400B238F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD644E219E6A8400B238F6 /* LoginViewController.swift */; };
+		CDBD6451219E6F4300B238F6 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD6450219E6F4300B238F6 /* MemberTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,6 @@
 /* Begin PBXFileReference section */
 		C72C5F6E219D8E7B00D3BA08 /* bookExchangeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookExchangeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C72C5F78219D8E7B00D3BA08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		C72C5F95219D8E7E00D3BA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		CDBD644E219E6A8400B238F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CDBD6450219E6F4300B238F6 /* MemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
-				C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */,
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
 				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
 				C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */,
@@ -112,6 +113,8 @@
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
 				C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */,
 				C72C5F7F219D8E7E00D3BA08 /* Info.plist */,
+				CDBD644E219E6A8400B238F6 /* LoginViewController.swift */,
+				CDBD6450219E6F4300B238F6 /* MemberTableViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -268,7 +271,8 @@
 				C72C5F76219D8E7B00D3BA08 /* SecondViewController.swift in Sources */,
 				C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */,
 				C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */,
-				C72C5F74219D8E7B00D3BA08 /* FirstViewController.swift in Sources */,
+				CDBD6451219E6F4300B238F6 /* MemberTableViewController.swift in Sources */,
+				CDBD644F219E6A8400B238F6 /* LoginViewController.swift in Sources */,
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
