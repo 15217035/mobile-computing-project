@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		64F2F9F6A71DED717C7634C2 /* Pods_bookExchangeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484BB86CD3F1BC432AD90457 /* Pods_bookExchangeAppTests.framework */; };
+		A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */; };
 		A776F64FC85CBE114B33E43F /* Pods_bookExchangeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C669A92CD41E8DE3CE67E /* Pods_bookExchangeAppUITests.framework */; };
 		C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */; };
-		C72C5F74219D8E7B00D3BA08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */; };
-		C72C5F76219D8E7B00D3BA08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */; };
 		C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F77219D8E7B00D3BA08 /* Main.storyboard */; };
 		C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */; };
 		C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */; };
@@ -47,12 +46,11 @@
 		2E3C669A92CD41E8DE3CE67E /* Pods_bookExchangeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		484BB86CD3F1BC432AD90457 /* Pods_bookExchangeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		488CCD8084BC1D3E21A6482D /* Pods-bookExchangeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeApp/Pods-bookExchangeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		B769C1B0A493C1E1C7406B1A /* Pods-bookExchangeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeAppTests/Pods-bookExchangeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9DF8C0D4685C5DD782BC9FD /* Pods-bookExchangeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeApp/Pods-bookExchangeApp.release.xcconfig"; sourceTree = "<group>"; };
 		C72C5F6E219D8E7B00D3BA08 /* bookExchangeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookExchangeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C72C5F78219D8E7B00D3BA08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C72C5F7D219D8E7E00D3BA08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,15 +144,14 @@
 			isa = PBXGroup;
 			children = (
 				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
-				C72C5F73219D8E7B00D3BA08 /* FirstViewController.swift */,
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
 				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
-				C72C5F75219D8E7B00D3BA08 /* SecondViewController.swift */,
 				C72C5F77219D8E7B00D3BA08 /* Main.storyboard */,
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
 				C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */,
 				C72C5F7F219D8E7E00D3BA08 /* Info.plist */,
 				CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */,
+				A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -408,10 +405,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C72C5F76219D8E7B00D3BA08 /* SecondViewController.swift in Sources */,
 				C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */,
 				C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */,
-				C72C5F74219D8E7B00D3BA08 /* FirstViewController.swift in Sources */,
+				A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */,
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

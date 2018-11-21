@@ -1,40 +1,17 @@
 //
-//  EventTableViewController.swift
+//  AccountTableViewController.swift
 //  bookExchangeApp
 //
-//  Created by 15217035 on 15/11/2018.
+//  Created by christy on 20/11/2018.
 //  Copyright © 2018 comp4097proj. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
+class AccountTableViewController: UITableViewController {
 
-struct eventInfo {
-    
-    var name:String
-    var event_id:Int
-    
-}
-
-
-class EventTableViewController: UITableViewController {
-  var eventArray = [eventInfo]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//         eventArray.append( eventInfo(name: "Book Fair", event_id: 1 ) )
-
-//        var ref: DatabaseReference!
-//
-//        ref = Database.database().reference()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -46,17 +23,44 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return eventArray.count
+        return 4
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-
-         if let nameLabel = cell.viewWithTag(101) as? UILabel {
-            nameLabel.text = eventArray[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
+        
+      
+            if let Label1 = cell.viewWithTag(301) as? UILabel {
+                if(indexPath.row == 0){
+                    Label1.text = "Hello testing"
+                    if let iconImage = cell.viewWithTag(302) as? UIImageView {
+                        iconImage.isHidden = false;
+                    }
+                    
+                }else if(indexPath.row == 1){
+                     Label1.text = "Book List"
+                }else if (indexPath.row == 2){
+                    Label1.text = "Notification"
+                }else if (indexPath.row == 3){
+                    Label1.text = "My Request"
+                }else if (indexPath.row == 4){
+                    Label1.text = "Log out/in"
+                }
         }
-
+        
+        if let iconImage = cell.viewWithTag(302) as? UIImageView {
+           
+            if(indexPath.row == 0){
+                iconImage.isHidden = false;
+            }else {
+                iconImage.isHidden = true;
+            }
+        }
+        
+        
+        
+       
         return cell
     }
 
@@ -101,7 +105,7 @@ class EventTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */
