@@ -18,6 +18,9 @@
 		C72C5F94219D8E7E00D3BA08 /* bookExchangeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F93219D8E7E00D3BA08 /* bookExchangeAppUITests.swift */; };
 		C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */; };
 		C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */; };
+		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
+		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
+		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
 		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
 		DB2F73CDF96722C93790CEAE /* Pods_bookExchangeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,9 @@
 		C72C5F95219D8E7E00D3BA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,11 +153,14 @@
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
 				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
 				C72C5F77219D8E7B00D3BA08 /* Main.storyboard */,
+				C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */,
+				C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */,
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
 				C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */,
 				C72C5F7F219D8E7E00D3BA08 /* Info.plist */,
 				CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */,
 				A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */,
+				C7A5B1B021A5814A001BDA67 /* MapViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -405,10 +414,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */,
 				C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */,
 				C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */,
 				A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */,
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
+				C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */,
+				C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

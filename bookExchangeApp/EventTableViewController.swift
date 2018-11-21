@@ -8,18 +8,20 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 
 struct eventInfo {
     
     var name:String
-    var event_id:Int
+    var event_id:String
+    
     
 }
 
 
 class EventTableViewController: UITableViewController {
-  var eventArray = [eventInfo]()
+  var eventArr = [eventInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,25 @@ class EventTableViewController: UITableViewController {
 //        var ref: DatabaseReference!
 //
 //        ref = Database.database().reference()
+        let ref = Firestore.firestore().collection("Events").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    
+                    
+                    if let name = document.data()["name"]{
+                        
+                        self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)"))
+                        
+                    }
+                }
+                self.tableView.reloadData()
+            }
+            
+        }
         
     }
 
@@ -46,15 +67,15 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return eventArray.count
+        return eventArr.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
 
-         if let nameLabel = cell.viewWithTag(101) as? UILabel {
-            nameLabel.text = eventArray[indexPath.row].name
+         if let nameLabel = cell.viewWithTag(102) as? UILabel {
+            nameLabel.text = eventArr[indexPath.row].name
         }
 
         return cell
@@ -96,14 +117,24 @@ class EventTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showEvent" {
+            
+            if let viewController = segue.destination as? EventDetailViewController {
+                
+                var selectedIndex = tableView.indexPathForSelectedRow!
+                
+                viewController.event_id = self.eventArr[selectedIndex.row].event_id
+                
+            }
+        }
+      
     }
-    */
 
 }
