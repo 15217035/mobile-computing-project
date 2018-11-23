@@ -9,6 +9,7 @@ target 'bookExchangeApp' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
 
   target 'bookExchangeAppTests' do
     inherit! :search_paths
