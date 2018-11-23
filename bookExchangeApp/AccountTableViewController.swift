@@ -81,9 +81,25 @@ class AccountTableViewController: UITableViewController {
     }
     
     func accountLogout(){
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.userLogin = false
+            tableView.reloadData()
+            let alertController = UIAlertController(title: "Logout", message: "Successfully", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+           
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
         
-        try! Auth.auth().signOut()
-    }
+
+        }
+    
 
     
 
@@ -98,7 +114,7 @@ class AccountTableViewController: UITableViewController {
             }
         }
         
-        if(UserDefaults.standard.string(forKey: "userid") != nil){
+        if(userLogin){
         if (indexPath.row == 2){
             self.performSegue(withIdentifier: "showBookList", sender: self)
         }else if (indexPath.row == 3 ){
