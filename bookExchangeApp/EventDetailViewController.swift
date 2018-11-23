@@ -66,7 +66,9 @@ class EventDetailViewController: UIViewController {
     }
     
     func needPermissionView(){
-        
+        let alert = UIAlertController(title: "Alert", message: "We need the permission to Your Calendar", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "I'll do it later", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
