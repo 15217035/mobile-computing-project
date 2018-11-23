@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
-
+import EventKit
 
 class EventDetailViewController: UIViewController {
     
@@ -23,7 +23,83 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var eventName: UILabel!
     
-
+    
+    @IBAction func clickToAddCal(_ sender: Any) {
+         checkCalendarAuthorizationStatus()
+    }
+    
+    func requestAccessToCalendar() {
+        
+        let eventStore : EKEventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: EKEntityType.event, completion: {
+            (accessGranted: Bool, error: Error?) in
+            
+            if accessGranted == true {
+                DispatchQueue.main.async(execute: {
+                    self.loadCalendars()
+//                    self.refreshTableView()
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+                    self.needPermissionView()
+                })
+            }
+        })
+    }
+    
+    func checkCalendarAuthorizationStatus() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch (status) {
+        case EKAuthorizationStatus.notDetermined:
+            // This happens on first-run
+            requestAccessToCalendar()
+        case EKAuthorizationStatus.authorized:
+            // Things are in line with being able to show the calendars in the table view
+            loadCalendars()
+//            refreshTableView()
+        case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
+            // We need to help them give us permission
+            needPermissionView()
+        }
+    }
+    
+    func needPermissionView(){
+        
+    }
+    
+    
+    func loadCalendars(){
+        let eventStore : EKEventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event) { (granted, error) in
+            
+            if (granted) && (error == nil) {
+                print("granted \(granted)")
+                print("error \(error)")
+                
+                let event:EKEvent = EKEvent(eventStore: eventStore)
+                
+                event.title = "Test Title"
+                event.startDate = Date()
+                event.endDate = Date()
+                event.notes = "This is a note"
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let error as NSError {
+                    print("failed to save event with error : \(error)")
+                }
+                print("Saved Event")
+            }
+            else{
+                
+                print("failed to save event with error : \(error) or access not granted")
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
