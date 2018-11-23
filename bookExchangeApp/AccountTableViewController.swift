@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AccountTableViewController: UITableViewController {
-
+ var userLogin = false
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if(UserDefaults.standard.string(forKey: "userid") != nil){
+            self.userLogin = true
+        }
+            tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,20 +40,28 @@ class AccountTableViewController: UITableViewController {
         
       
             if let Label1 = cell.viewWithTag(301) as? UILabel {
-                if(indexPath.row == 0){
-                    Label1.text = "Hello testing"
-                    if let iconImage = cell.viewWithTag(302) as? UIImageView {
-                        iconImage.isHidden = false;
+                
+                if(userLogin){
+                    if(indexPath.row == 0){
+                        Label1.text = UserDefaults.standard.string(forKey: "userid") ?? "Please login first."
+                        if let iconImage = cell.viewWithTag(302) as? UIImageView {
+                            iconImage.isHidden = false;
+                        }
+                    }else if(indexPath.row == 1){
+                        Label1.text = "Log out"
+                    }else if (indexPath.row == 2){
+                        Label1.text = "My book list"
+                    }else if (indexPath.row == 3){
+                        Label1.text = "Notification"
                     }
-                    
+                }else {
+                if(indexPath.row == 0){
+                    Label1.text = "Please login first."
                 }else if(indexPath.row == 1){
-                     Label1.text = "Book List"
-                }else if (indexPath.row == 2){
-                    Label1.text = "Notification"
-                }else if (indexPath.row == 3){
-                    Label1.text = "My Request"
-                }else if (indexPath.row == 4){
-                    Label1.text = "Log out/in"
+                        Label1.text = "Log in"
+                    }else {
+                        Label1.text = ""
+                }
                 }
         }
         
@@ -63,6 +79,35 @@ class AccountTableViewController: UITableViewController {
        
         return cell
     }
+    
+    func accountLogout(){
+        
+        try! Auth.auth().signOut()
+    }
+
+    
+
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath){
+        
+        if(indexPath.row == 1){
+            if(userLogin){
+                accountLogout()
+            }else if(!userLogin){
+                self.performSegue(withIdentifier: "showLogin", sender: self)
+            }
+        }
+        
+        if(UserDefaults.standard.string(forKey: "userid") != nil){
+        if (indexPath.row == 2){
+            self.performSegue(withIdentifier: "showBookList", sender: self)
+        }else if (indexPath.row == 3 ){
+            
+        }
+        }
+    }
+}
+
 
 
     /*
@@ -100,14 +145,3 @@ class AccountTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

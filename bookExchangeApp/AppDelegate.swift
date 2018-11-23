@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //...
                 FirebaseApp.configure()
+                 UserDefaults.standard.set(nil, forKey: "userid")
                 return true
         }
     }

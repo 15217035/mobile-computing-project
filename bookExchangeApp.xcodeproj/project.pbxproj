@@ -21,6 +21,8 @@
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
+		CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255021A7A197006D6765 /* BookListTableViewController.swift */; };
+		CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255221A7A2D3006D6765 /* LoginViewController.swift */; };
 		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
 		DB2F73CDF96722C93790CEAE /* Pods_bookExchangeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CD68255021A7A197006D6765 /* BookListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
+		CD68255221A7A2D3006D6765 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +165,8 @@
 				CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */,
 				A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */,
 				C7A5B1B021A5814A001BDA67 /* MapViewController.swift */,
+				CD68255021A7A197006D6765 /* BookListTableViewController.swift */,
+				CD68255221A7A2D3006D6765 /* LoginViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -414,12 +420,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */,
 				C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */,
 				C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */,
 				C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */,
 				A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */,
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 				C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */,
+				CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */,
 				C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,7 +611,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.4097proj.bookExchangeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -621,7 +629,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.4097proj.bookExchangeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
