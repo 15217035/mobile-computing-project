@@ -19,6 +19,7 @@
 		C72C5F94219D8E7E00D3BA08 /* bookExchangeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F93219D8E7E00D3BA08 /* bookExchangeAppUITests.swift */; };
 		C72C5FA2219D905800D3BA08 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */; };
 		C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */; };
+		C74D507321A962F600558F62 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74D507221A962F600558F62 /* CommentTableViewController.swift */; };
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
@@ -70,6 +71,7 @@
 		C72C5F95219D8E7E00D3BA08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		C74D507221A962F600558F62 /* CommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
 				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
 				C72C5F77219D8E7B00D3BA08 /* Main.storyboard */,
+				C74D507221A962F600558F62 /* CommentTableViewController.swift */,
 				C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */,
 				C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */,
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
@@ -430,6 +433,7 @@
 				A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */,
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 				C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */,
+				C74D507321A962F600558F62 /* CommentTableViewController.swift in Sources */,
 				CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */,
 				A318CC2321A8DF3300FF5468 /* AddNewBookViewController.swift in Sources */,
 				C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */,
