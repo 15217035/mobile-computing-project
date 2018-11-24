@@ -26,10 +26,7 @@ var bookArr = [myBook]()
     var ownerId = ""
  
     override func viewDidLoad() {
-        
     super.viewDidLoad()
-    self.userID = Auth.auth().currentUser!.uid
-        
         let ref = Firestore.firestore().collection("Books").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -38,16 +35,16 @@ var bookArr = [myBook]()
                 for document in querySnapshot!.documents {
                     self.ownerId = document.data()["ownerId"] as! String
                     self.userID = Auth.auth().currentUser!.uid
-                    
+                    self.bookArr.removeAll()
                     if self.ownerId == self.userID {
-                    if let name = document.data()["name"],
-                        let author = document.data()["author"]{
-                        self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
+                        if let name = document.data()["name"],
+                            let author = document.data()["author"]{
+                            self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
+                        }
                     }
-                    }
-                    }
-                    }
+                }
             }
+        }
         tableView.reloadData()
 }
 
@@ -58,6 +55,7 @@ var bookArr = [myBook]()
         if(UserDefaults.standard.string(forKey: "userid") != nil){
             self.userLogin = true
         }
+        self.userID = Auth.auth().currentUser!.uid
         tableView.reloadData()
     }
 
@@ -70,22 +68,26 @@ var bookArr = [myBook]()
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return bookArr.count + 1
+        if(section == 0){
+            return 1
+        }else{
+             return bookArr.count
+        }
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookListCell", for: indexPath)
         if(userLogin){
-            if(indexPath.row == 0 ){
+            if(indexPath.row == 0 && indexPath.section == 0){
                 cell.textLabel?.text = "+ Add new book"
-            }else{
-                cell.textLabel?.text = self.bookArr[indexPath.row-1].name
+            }else {
+                cell.textLabel?.text = self.bookArr[indexPath.row].name
             }
         }
         return cell

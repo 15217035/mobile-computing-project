@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+
 
 class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookName: UILabel!
@@ -18,16 +20,14 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookDetail: UILabel!
     
     @IBOutlet weak var bookImage: UIImageView!
+
+    var userLogin = false
     
     var book_id:String = "0001"
-    
-    
-    @IBOutlet weak var tableComment: UITableView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let db = Firestore.firestore()
         
         let docRef = db.collection("Books").document(book_id)
@@ -39,7 +39,7 @@ class BookDetailViewController: UIViewController {
                 
                 if let name = document.data()?["name"],
                 let image = document.data()?["image"]{
-                    self.bookName.text = "\(name)"
+                self.bookName.text = "\(name)"
                     
                     
                     
@@ -74,12 +74,17 @@ class BookDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        if(UserDefaults.standard.string(forKey: "userid") != nil){
+            self.userLogin = true
+        }else{
+            self.userLogin = false
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    
 
     
     // MARK: - Navigation
@@ -91,11 +96,8 @@ class BookDetailViewController: UIViewController {
         
         
         if segue.identifier == "showComment" {
-            
+
             if let viewController = segue.destination as? CommentTableViewController {
-                
-                
-                
                 viewController.book_id = book_id
                 
             }

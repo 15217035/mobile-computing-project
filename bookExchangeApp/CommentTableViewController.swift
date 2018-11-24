@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseFirestore
+import FirebaseAuth
+
 
 struct comment {
     
@@ -18,17 +21,40 @@ struct comment {
 
 class CommentTableViewController: UITableViewController {
     
+    @IBOutlet var commentTF: UITextField!
+    @IBOutlet var booknameLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    
     var items: [String] = ["Swift1", "Swift2", "Swift3"]
     
     var commentArr = [comment]()
     
     var book_id:String = "empty"
+    
+    var myUserID = ""
+    var myUsername = ""
+    
+    var bookname:String = ""
+    var author:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        let docRef = Firestore.firestore().collection("Books").document(book_id)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+             
+                if let name = document.data()?["name"],
+                    let author = document.data()?["author"]{
+                    self.booknameLabel.text  = "Book: \(name)" as? String;
+                    self.authorLabel.text = "Author: \(author)" as? String
+                }
+            }
         
         let ref = Firestore.firestore().collection("Books")
-        let commentRef = ref.document(book_id).collection("comment")
+            let commentRef = ref.document(self.book_id).collection("comment")
         let commentsRef = commentRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -37,28 +63,49 @@ class CommentTableViewController: UITableViewController {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    if let from = document.data()["from"],
+                    if let username = document.data()["from"],
                         let content = document.data()["content"]{
-                        
-                        
-                        self.commentArr.append(comment(from: "\(from)",
+    
+                        self.commentArr.append(comment(from: "\(username)",
                             content: "\(content)"))
-                        
                     }
-                   
                 }
                 self.tableView.reloadData()
             }
             
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        }
     }
 
+    @IBAction func postClicked(_ sender: Any) {
+        if(UserDefaults.standard.string(forKey: "userid") == nil){
+            let alertController = UIAlertController(title: "Error", message: "Please login first", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }else{
+            
+            self.myUserID = Auth.auth().currentUser!.uid
+            self.myUsername = Auth.auth().currentUser!.email ?? ""
+            var ref: DocumentReference? = nil
+            ref = Firestore.firestore().document("Books/\(book_id)").collection("comment").addDocument(data: [
+                "content": commentTF.text ?? "",
+                "userId": self.myUserID,
+                "from": self.myUsername
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                    self.commentArr.append(comment(from: "\(self.myUsername)",
+                        content: "\(self.commentTF.text ?? "")"))
+                    self.commentTF.text = ""
+                    self.tableView.reloadData()
+                }
+            }
+           
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,11 +125,15 @@ class CommentTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
-
-        // Configure the cell...
-        cell.textLabel?.text = commentArr[indexPath.row].content
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath)
+        if let fromLabel = cell.viewWithTag(111) as? UILabel {
+          fromLabel.text = "From " + commentArr[indexPath.row].from
+        }
+        
+        if let contentLabel = cell.viewWithTag(112) as? UILabel {
+            contentLabel.text = commentArr[indexPath.row].content
+        }
+    
         return cell
     }
     
