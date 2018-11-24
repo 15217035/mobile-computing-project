@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 import FirebaseFirestore
 
 import EventKit
@@ -18,6 +18,7 @@ class EventDetailViewController: UIViewController {
     var event_name:String = "empty"
     var start_time:String = "empty"
     var end_time:String = "empty"
+    var event_image_filename:String = "empty"
     
     
     // for next page addr
@@ -26,6 +27,7 @@ class EventDetailViewController: UIViewController {
     
     // for labelUI
     @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventImage: UIImageView!
     
     
     // for button
@@ -53,18 +55,39 @@ class EventDetailViewController: UIViewController {
                 let startTime = document.data()?["startTime"],
                 let endTime = document.data()?["endTime"],
                 let startDate = document.data()?["startDate"],
-                let endDate = document.data()?["endDate"]{
+                let endDate = document.data()?["endDate"],
+                let image = document.data()?["image"]{
                     
                     self.eventName.text = "\(name)"
+                    
                     
                     self.event_name = "\(name)"
                     self.start_time = "\(startDate) \(startTime)"
                     self.end_time = "\(endDate) \(endTime)"
+//                    self.event_image_filename = "\(image)"
                     
                     self.event_addr = document.data()?["address"] as! GeoPoint
                     self.locationName = "\(location)"
                     
-
+                    // load image from firebase Storage
+                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+                    let storageRef = storage.reference()
+                    
+                    let fileName = "\(image)"
+                    
+                    let ImageRef = storageRef.child("event")
+                        
+                    let eventImageRef = ImageRef.child(fileName)
+                    
+                    eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print("--------------error: \(error.localizedDescription)")
+                        } else {
+                            let image = UIImage(data: data!)
+                            self.eventImage.image = image
+                        }
+                    }
+                    
                 }
                 
             } else {

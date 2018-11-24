@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseFirestore
 
 class BookDetailViewController: UIViewController {
@@ -15,6 +16,8 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookAuthor: UILabel!
     
     @IBOutlet weak var bookDetail: UILabel!
+    
+    @IBOutlet weak var bookImage: UIImageView!
     
     var book_id:String = "0001"
 
@@ -30,9 +33,33 @@ class BookDetailViewController: UIViewController {
 //                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 //                print("Document data: \(dataDescription)")
                 
-                if let name = document.data()?["name"]{
+                if let name = document.data()?["name"],
+                let image = document.data()?["image"]{
                     self.bookName.text = "\(name)"
+                    
+                    
+                    
+                    // load image from firebase Storage
+                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+                    let storageRef = storage.reference()
+                    
+                    let fileName = "\(image)"
+                    
+                    let ImageRef = storageRef.child("book")
+                    
+                    let eventImageRef = ImageRef.child(fileName)
+                    
+                    eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print("--------------error: \(error.localizedDescription)")
+                        } else {
+                            let image = UIImage(data: data!)
+                            self.bookImage.image = image
+                        }
+                    }
+                    
                 }
+                
                 
             } else {
                 print("Document does not exist")

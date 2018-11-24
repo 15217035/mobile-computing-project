@@ -15,6 +15,8 @@ struct eventInfo {
     
     var name:String
     var event_id:String
+//    var event_image_url:String
+//    var event_image:UIImage
     
     
 }
@@ -22,6 +24,8 @@ struct eventInfo {
 
 class EventTableViewController: UITableViewController {
   var eventArr = [eventInfo]()
+    
+    var imageArr = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +40,31 @@ class EventTableViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 
+                var image:UIImage
+                
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
+//                    // load image from firebase Storage
+//                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+//                    let storageRef = storage.reference()
+//                    
+//                    let fileName = "\(document.data()["image"])"
+//                    
+//                    let ImageRef = storageRef.child("event")
+//                    
+//                    let eventImageRef = ImageRef.child(fileName)
+//                    
+//                    eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                        if let error = error {
+//                            print("--------------error: \(error.localizedDescription)")
+//                        } else {
+//                            image = UIImage(data: data!)!
+//                            imageArr.append(<#T##newElement: UIImage##UIImage#>)
+//                        }
+//                    }
                     
+                    // create a list of event data
                     if let name = document.data()["name"]{
                         
                         self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)"))
@@ -73,6 +98,19 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        
+        if let cellImage = cell.viewWithTag(101) as? UIImageView {
+            
+//            let url = eventArr[indexPath.row].event_image_url
+            
+//            if let unwrappedUrl = url {
+            
+                // import
+            
+            
+//        }
+            
+        }
 
          if let nameLabel = cell.viewWithTag(102) as? UILabel {
             nameLabel.text = eventArr[indexPath.row].name
