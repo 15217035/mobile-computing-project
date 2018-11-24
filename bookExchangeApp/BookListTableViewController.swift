@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import Foundation
 
 struct myBook {
     
@@ -27,28 +28,32 @@ var bookArr = [myBook]()
  
     override func viewDidLoad() {
     super.viewDidLoad()
+    getBookArray()
+    tableView.reloadData()
+}
+
+
+    func getBookArray(){
         let ref = Firestore.firestore().collection("Books").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                
-                for document in querySnapshot!.documents {
-                    self.ownerId = document.data()["ownerId"] as! String
-                    self.userID = Auth.auth().currentUser!.uid
-                    self.bookArr.removeAll()
-                    if self.ownerId == self.userID {
-                        if let name = document.data()["name"],
-                            let author = document.data()["author"]{
-                            self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
-                        }
+        if let err = err {
+            print("Error getting documents: \(err)")
+        } else {
+            for document in querySnapshot!.documents {
+                self.ownerId = document.data()["ownerId"] as! String
+                self.userID = Auth.auth().currentUser!.uid
+                self.bookArr.removeAll()
+                if self.ownerId == self.userID {
+                    if let name = document.data()["name"],
+                        let author = document.data()["author"]{
+                        self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
+                        self.tableView.reloadData()
                     }
                 }
             }
         }
-        tableView.reloadData()
-}
-
-
+        }
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -56,6 +61,7 @@ var bookArr = [myBook]()
             self.userLogin = true
         }
         self.userID = Auth.auth().currentUser!.uid
+        getBookArray()
         tableView.reloadData()
     }
 
@@ -68,26 +74,24 @@ var bookArr = [myBook]()
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if(section == 0){
-            return 1
-        }else{
-             return bookArr.count
+             return bookArr.count + 1
         }
-    }
+
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookListCell", for: indexPath)
         if(userLogin){
-            if(indexPath.row == 0 && indexPath.section == 0){
+            if(indexPath.row == 0){
                 cell.textLabel?.text = "+ Add new book"
             }else {
-                cell.textLabel?.text = self.bookArr[indexPath.row].name
+                let count = indexPath.row - 1 ;
+                cell.textLabel?.text = self.bookArr[count].name
             }
         }
         return cell
@@ -99,7 +103,7 @@ var bookArr = [myBook]()
         if(userLogin){
             if (indexPath.row == 0){
                 self.performSegue(withIdentifier: "showAddBook", sender: self)
-            }else if (indexPath.row == 3 ){
+            }else{
                 self.performSegue(withIdentifier: "showMyBookDetail", sender: self)
             }
         }
@@ -115,8 +119,8 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? BookDetailViewController {
             
             var selectedIndex = tableView.indexPathForSelectedRow!
-            
-            viewController.book_id = self.bookArr[selectedIndex.row-1].book_id
+            let count = selectedIndex.row  - 1 ;
+            viewController.book_id = self.bookArr[count].book_id
             
         }
     }

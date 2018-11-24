@@ -43,7 +43,6 @@ class AddNewBookViewController: UIViewController {
             "name": bookNameTF.text ?? "",
             "author": authorTF.text ?? "",
             "ownerId": self.userID,
-            "book_id": "",
             "image": image_set_name
         ]) { err in
             if let err = err {
