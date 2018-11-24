@@ -9,9 +9,18 @@
 import UIKit
 import FirebaseFirestore
 
+struct comment {
+    
+    var from:String
+    var content:String
+    
+}
+
 class CommentTableViewController: UITableViewController {
     
     var items: [String] = ["Swift1", "Swift2", "Swift3"]
+    
+    var commentArr = [comment]()
     
     var book_id:String = "empty"
 
@@ -28,9 +37,17 @@ class CommentTableViewController: UITableViewController {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
+                    if let from = document.data()["from"],
+                        let content = document.data()["content"]{
+                        
+                        
+                        self.commentArr.append(comment(from: "\(from)",
+                            content: "\(content)"))
+                        
+                    }
                    
                 }
-//                self.tableView.reloadData()
+                self.tableView.reloadData()
             }
             
         }
@@ -56,7 +73,7 @@ class CommentTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return commentArr.count
     }
 
     
@@ -64,7 +81,7 @@ class CommentTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = commentArr[indexPath.row].content
 
         return cell
     }
