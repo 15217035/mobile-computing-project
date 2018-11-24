@@ -37,33 +37,29 @@ class AccountTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
-        
-      
-            if let Label1 = cell.viewWithTag(301) as? UILabel {
-                
+    
                 if(userLogin){
                     if(indexPath.row == 0){
-                        Label1.text = UserDefaults.standard.string(forKey: "userid") ?? "Please login first."
+                        cell.textLabel?.text = UserDefaults.standard.string(forKey: "userid") ?? "Please login first."
                         if let iconImage = cell.viewWithTag(302) as? UIImageView {
                             iconImage.isHidden = false;
                         }
                     }else if(indexPath.row == 1){
-                        Label1.text = "Log out"
+                        cell.textLabel?.text = "Log out"
                     }else if (indexPath.row == 2){
-                        Label1.text = "My book list"
+                        cell.textLabel?.text = "My book list"
                     }else if (indexPath.row == 3){
-                        Label1.text = "Notification"
+                        cell.textLabel?.text = "Notification"
                     }
                 }else {
                 if(indexPath.row == 0){
-                    Label1.text = "Please login first."
+                    cell.textLabel?.text = "Please login first."
                 }else if(indexPath.row == 1){
-                        Label1.text = "Log in"
+                     cell.textLabel?.text = "Log in"
                     }else {
-                        Label1.text = ""
+                      cell.textLabel?.text = ""
                 }
                 }
-        }
         
         if let iconImage = cell.viewWithTag(302) as? UIImageView {
            
@@ -108,7 +104,10 @@ class AccountTableViewController: UITableViewController {
         
         if(indexPath.row == 1){
             if(userLogin){
-                accountLogout()
+                let alertController = UIAlertController(title: "Logout", message: "Are you Sure?", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {( alertController: UIAlertAction?) in self.accountLogout()}))
+                self.present(alertController, animated: true, completion: nil)
             }else if(!userLogin){
                 self.performSegue(withIdentifier: "showLogin", sender: self)
             }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		64F2F9F6A71DED717C7634C2 /* Pods_bookExchangeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484BB86CD3F1BC432AD90457 /* Pods_bookExchangeAppTests.framework */; };
 		A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */; };
+		A318CC2321A8DF3300FF5468 /* AddNewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */; };
 		A776F64FC85CBE114B33E43F /* Pods_bookExchangeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C669A92CD41E8DE3CE67E /* Pods_bookExchangeAppUITests.framework */; };
 		C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */; };
 		C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F77219D8E7B00D3BA08 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		484BB86CD3F1BC432AD90457 /* Pods_bookExchangeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		488CCD8084BC1D3E21A6482D /* Pods-bookExchangeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeApp/Pods-bookExchangeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBookViewController.swift; sourceTree = "<group>"; };
 		B769C1B0A493C1E1C7406B1A /* Pods-bookExchangeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeAppTests/Pods-bookExchangeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9DF8C0D4685C5DD782BC9FD /* Pods-bookExchangeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeApp/Pods-bookExchangeApp.release.xcconfig"; sourceTree = "<group>"; };
 		C72C5F6E219D8E7B00D3BA08 /* bookExchangeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookExchangeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				C7A5B1B021A5814A001BDA67 /* MapViewController.swift */,
 				CD68255021A7A197006D6765 /* BookListTableViewController.swift */,
 				CD68255221A7A2D3006D6765 /* LoginViewController.swift */,
+				A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				C72C5FA4219D94FC00D3BA08 /* EventTableViewController.swift in Sources */,
 				C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */,
 				CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */,
+				A318CC2321A8DF3300FF5468 /* AddNewBookViewController.swift in Sources */,
 				C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

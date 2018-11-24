@@ -9,7 +9,8 @@
 import UIKit
 
 class BookListTableViewController: UITableViewController {
-
+ var userLogin = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +19,14 @@ class BookListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if(UserDefaults.standard.string(forKey: "userid") != nil){
+            self.userLogin = true
+        }
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +38,43 @@ class BookListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookListCell", for: indexPath)
+        if(userLogin){
+            if(indexPath.row == 0 ){
+                cell.textLabel?.text = "+ Add new book"
+            }else{
+                
+            }
+        }
+        
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath){
+        
+        if(userLogin){
+            if (indexPath.row == 0){
+                self.performSegue(withIdentifier: "showAddBook", sender: self)
+            }else if (indexPath.row == 3 ){
+                
+            }
+        }
+    }
+}
+
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -92,4 +121,4 @@ class BookListTableViewController: UITableViewController {
     }
     */
 
-}
+
