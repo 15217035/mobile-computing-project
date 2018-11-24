@@ -16,16 +16,14 @@ struct eventInfo {
     var name:String
     var event_id:String
 //    var event_image_url:String
-//    var event_image:UIImage
+    var event_image:String
     
     
 }
 
 
 class EventTableViewController: UITableViewController {
-  var eventArr = [eventInfo]()
-    
-    var imageArr = [UIImage]()
+    var eventArr = [eventInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,34 +38,15 @@ class EventTableViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 
-                var image:UIImage
-                
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-//                    // load image from firebase Storage
-//                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
-//                    let storageRef = storage.reference()
-//                    
-//                    let fileName = "\(document.data()["image"])"
-//                    
-//                    let ImageRef = storageRef.child("event")
-//                    
-//                    let eventImageRef = ImageRef.child(fileName)
-//                    
-//                    eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//                        if let error = error {
-//                            print("--------------error: \(error.localizedDescription)")
-//                        } else {
-//                            image = UIImage(data: data!)!
-//                            imageArr.append(<#T##newElement: UIImage##UIImage#>)
-//                        }
-//                    }
-                    
-                    // create a list of event data
-                    if let name = document.data()["name"]{
+                    // create a list of data
+                    if let name = document.data()["name"],
+                        let image = document.data()["image"]{
                         
-                        self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)"))
+                        // load a list of event array
+                        self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)", event_image:"\(image)"))
                         
                     }
                 }
@@ -101,14 +80,24 @@ class EventTableViewController: UITableViewController {
         
         if let cellImage = cell.viewWithTag(101) as? UIImageView {
             
-//            let url = eventArr[indexPath.row].event_image_url
             
-//            if let unwrappedUrl = url {
+            // load a list of image from firebase Storage
+            let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+            let storageRef = storage.reference()
             
-                // import
+            let fileName = eventArr[indexPath.row].event_image
             
+            let ImageRef = storageRef.child("event")
             
-//        }
+            let eventImageRef = ImageRef.child(fileName)
+            
+            eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                } else {
+                    cellImage.image = UIImage(data: data!)!
+                }
+            }
             
         }
 

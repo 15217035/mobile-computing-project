@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseFirestore
 
 struct Book {
@@ -14,6 +15,7 @@ struct Book {
     var name:String
     var author:String
     var book_id:String
+    var book_image:String
     
 }
 
@@ -43,21 +45,20 @@ class BookTableViewController: UITableViewController {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
 
-                    print(document.data())
-                    print(document.data()["author"])
                     
                     if let name = document.data()["name"],
-                    let author = document.data()["author"]{
+                    let author = document.data()["author"],
+                    let image = document.data()["image"]{
                     
                         
-                        self.bookArr.append(Book(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
-                        
+                        self.bookArr.append(Book(name: "\(name)",
+                            author: "\(author)",
+                            book_id: "\(document.documentID)",
+                            book_image:"\(image)"))
                         
                     }
-                    
                 
                 }
-                print(self.bookArr[0])
                 self.tableView.reloadData()
             }
             
@@ -95,30 +96,40 @@ class BookTableViewController: UITableViewController {
         // Configure the cell...
 //        cell.textLabel?.text = bookArray[indexPath.row].name
         
-//        if let cellImage = cell.viewWithTag(100) as? UIImageView {
-//
-//            let url = realmResults?[indexPath.row].image
-//
-//            if let unwrappedUrl = url {
-//
-//                Alamofire.request(unwrappedUrl).responseData {
-//                    response in
-//
-//                    if let data = response.result.value {
-//                        cellImage.image = UIImage(data: data, scale:1)
-//                    }
-//                }
-//            }
-//
-//        }
+        if let cellImage = cell.viewWithTag(110) as? UIImageView {
+            
+            // load a list of image from firebase Storage
+            let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+            let storageRef = storage.reference()
+            
+            let fileName = bookArr[indexPath.row].book_image
+            
+            let ImageRef = storageRef.child("book")
+            
+            let eventImageRef = ImageRef.child(fileName)
+            
+            eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                } else {
+//                    self.imageArr.append(UIImage(data: data!)!)
+//                    self.tableView.reloadData()
+                    cellImage.image = UIImage(data: data!)!
+                }
+            }
+
+        }
+        
         if let cellLabel = cell.viewWithTag(111) as? UILabel {
             print("111")
             cellLabel.text = self.bookArr[indexPath.row].name
         }
+        
         if let cellLabel = cell.viewWithTag(112) as? UILabel {
             print("112")
             cellLabel.text = self.bookArr[indexPath.row].author
         }
+        
         return cell
     }
     
