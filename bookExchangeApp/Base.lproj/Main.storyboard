@@ -464,6 +464,7 @@
                     </tableView>
                     <connections>
                         <segue destination="skb-k5-VmL" kind="show" identifier="showAddBook" id="cp2-Y4-eaX"/>
+                        <segue destination="V3v-QN-kXO" kind="show" identifier="showMyBookDetail" id="r2H-zJ-vTR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCT-EL-Vf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -582,4 +583,7 @@
             <point key="canvasLocation" x="2980" y="384.55772113943033"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="r2H-zJ-vTR"/>
+    </inferredMetricsTieBreakers>
 </document>

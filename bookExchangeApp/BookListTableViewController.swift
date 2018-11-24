@@ -7,19 +7,51 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import FirebaseFirestore
+
+struct myBook {
+    
+    var name:String
+    var author:String
+    var book_id:String
+    
+}
 
 class BookListTableViewController: UITableViewController {
  var userLogin = false
-    
+var bookArr = [myBook]()
+    var userID = ""
+    var ownerId = ""
+ 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+    super.viewDidLoad()
+    self.userID = Auth.auth().currentUser!.uid
+        
+        let ref = Firestore.firestore().collection("Books").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+                    self.ownerId = document.data()["ownerId"] as! String
+                    self.userID = Auth.auth().currentUser!.uid
+                    
+                    if self.ownerId == self.userID {
+                    if let name = document.data()["name"],
+                        let author = document.data()["author"]{
+                        self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
+                    }
+                    }
+                    }
+                    }
+            }
+        tableView.reloadData()
+}
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -43,7 +75,7 @@ class BookListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return bookArr.count + 1
     }
 
 
@@ -53,11 +85,9 @@ class BookListTableViewController: UITableViewController {
             if(indexPath.row == 0 ){
                 cell.textLabel?.text = "+ Add new book"
             }else{
-                
+                cell.textLabel?.text = self.bookArr[indexPath.row-1].name
             }
         }
-        
-
         return cell
     }
     
@@ -68,10 +98,30 @@ class BookListTableViewController: UITableViewController {
             if (indexPath.row == 0){
                 self.performSegue(withIdentifier: "showAddBook", sender: self)
             }else if (indexPath.row == 3 ){
-                
+                self.performSegue(withIdentifier: "showMyBookDetail", sender: self)
             }
         }
     }
+
+
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    if segue.identifier == "showMyBookDetail" {
+        
+        if let viewController = segue.destination as? BookDetailViewController {
+            
+            var selectedIndex = tableView.indexPathForSelectedRow!
+            
+            viewController.book_id = self.bookArr[selectedIndex.row-1].book_id
+            
+        }
+    }
+    
+    
+}
+
 }
 
 
@@ -110,15 +160,4 @@ class BookListTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 

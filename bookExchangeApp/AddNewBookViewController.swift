@@ -34,7 +34,8 @@ class AddNewBookViewController: UIViewController {
         ref = Firestore.firestore().collection("Books").addDocument(data: [
             "name": bookNameTF.text ?? "",
             "author": authorTF.text ?? "",
-            "owner": self.userID
+            "ownerId": self.userID,
+            "book_id": ""
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
