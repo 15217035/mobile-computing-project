@@ -121,6 +121,39 @@ class AddNewBookViewController: UIViewController {
     
     // unfinished
     @IBAction func addPhotoFromCamera(_ sender: Any) {
+        
+        
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status{
+        case .authorized: // The user has previously granted access to the camera.
+            self.addPhotoFromCameraGo()
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.addPhotoFromCameraGo()
+                } else {
+                    self.addAlertForSettings()
+                }
+            }
+            //denied - The user has previously denied access.
+        //restricted - The user can't grant access due to restrictions.
+        case .denied, .restricted:
+            self.addAlertForSettings()
+            return
+            
+        default:
+            break
+        }
+    }
+    
+    func addAlertForSettings(){
+        let alert = UIAlertController(title: "Alert", message: "We need the permission", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "I'll do it later", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addPhotoFromCameraGo(){
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             print("camera not supported by this device")
             return
