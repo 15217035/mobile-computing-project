@@ -755,8 +755,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Go to forum">
+                                <state key="normal" title="Chatroom">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ybg-wN-Nj9" kind="show" identifier="showComment" id="SsD-qK-STb"/>
@@ -818,27 +819,27 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe0-Qx-8rA">
                                     <rect key="frame" x="27" y="48" width="307" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="vNI-i9-V8V"/>
+                                        <constraint firstAttribute="height" constant="21" id="2tu-9y-JXN"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="LaoSangamMN" family="Lao Sangam MN" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are watching..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scd-M5-sXE">
-                                    <rect key="frame" x="17" y="8" width="161" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="161" id="Xd0-d6-8t7"/>
-                                        <constraint firstAttribute="height" constant="21" id="ffg-V6-9Fv"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYz-sB-2nn">
                                     <rect key="frame" x="17" y="127" width="120" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="Daq-PU-adO"/>
-                                        <constraint firstAttribute="width" constant="120" id="rPR-It-Hgy"/>
+                                        <constraint firstAttribute="height" constant="21" id="4tX-Se-Kzp"/>
+                                        <constraint firstAttribute="width" constant="120" id="jPw-NR-5jD"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chatroom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scd-M5-sXE">
+                                    <rect key="frame" x="27" y="17" width="161" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="161" id="ILE-Ja-4UW"/>
+                                        <constraint firstAttribute="height" constant="21" id="dqv-Y0-ade"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -847,17 +848,17 @@
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="scd-M5-sXE" firstAttribute="leading" secondItem="f83-sc-c55" secondAttribute="leading" constant="17" id="6iv-9M-Cow"/>
-                                <constraint firstItem="scd-M5-sXE" firstAttribute="top" secondItem="f83-sc-c55" secondAttribute="top" constant="8" id="F0Y-rU-8UA"/>
-                                <constraint firstAttribute="bottom" secondItem="gYz-sB-2nn" secondAttribute="bottom" constant="13" id="FU0-bs-PZr"/>
-                                <constraint firstItem="gYz-sB-2nn" firstAttribute="top" secondItem="GfF-RS-ytR" secondAttribute="bottom" constant="23" id="Hak-JQ-wo4"/>
-                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="leading" secondItem="f83-sc-c55" secondAttribute="leading" constant="27" id="K2J-NG-Q1T"/>
-                                <constraint firstAttribute="trailing" secondItem="fe0-Qx-8rA" secondAttribute="trailing" constant="41" id="KVQ-hh-qbP"/>
-                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="top" secondItem="scd-M5-sXE" secondAttribute="bottom" constant="19" id="Tq6-vo-c84"/>
-                                <constraint firstItem="scd-M5-sXE" firstAttribute="leading" secondItem="gYz-sB-2nn" secondAttribute="leading" id="Z3G-Ng-mdR"/>
-                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="leading" secondItem="GfF-RS-ytR" secondAttribute="leading" id="b02-gn-a0m"/>
-                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="trailing" secondItem="GfF-RS-ytR" secondAttribute="trailing" id="emt-cP-gZo"/>
-                                <constraint firstItem="GfF-RS-ytR" firstAttribute="top" secondItem="fe0-Qx-8rA" secondAttribute="bottom" constant="14" id="hzn-Wn-U2Z"/>
+                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="trailing" secondItem="GfF-RS-ytR" secondAttribute="trailing" id="4yX-vf-0pi"/>
+                                <constraint firstItem="gYz-sB-2nn" firstAttribute="top" secondItem="GfF-RS-ytR" secondAttribute="bottom" constant="23" id="7Ks-xi-M4R"/>
+                                <constraint firstItem="gYz-sB-2nn" firstAttribute="leading" secondItem="f83-sc-c55" secondAttribute="leading" constant="17" id="8JG-aw-THw"/>
+                                <constraint firstAttribute="bottom" secondItem="gYz-sB-2nn" secondAttribute="bottom" constant="13" id="IjI-Z0-JGf"/>
+                                <constraint firstItem="GfF-RS-ytR" firstAttribute="top" secondItem="fe0-Qx-8rA" secondAttribute="bottom" constant="14" id="cDO-cO-QrY"/>
+                                <constraint firstItem="scd-M5-sXE" firstAttribute="top" secondItem="f83-sc-c55" secondAttribute="top" constant="17" id="g1E-7Z-kwh"/>
+                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="top" secondItem="scd-M5-sXE" secondAttribute="bottom" constant="10" id="gzR-PK-oiF"/>
+                                <constraint firstAttribute="trailing" secondItem="fe0-Qx-8rA" secondAttribute="trailing" constant="41" id="iDa-ga-6e0"/>
+                                <constraint firstItem="fe0-Qx-8rA" firstAttribute="leading" secondItem="GfF-RS-ytR" secondAttribute="leading" id="je4-6j-6Em"/>
+                                <constraint firstItem="scd-M5-sXE" firstAttribute="leading" secondItem="fe0-Qx-8rA" secondAttribute="leading" id="wAX-tG-hFO"/>
+                                <constraint firstItem="scd-M5-sXE" firstAttribute="leading" secondItem="f83-sc-c55" secondAttribute="leading" constant="27" id="xDo-Kg-88C"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="BRl-mR-NmR">
