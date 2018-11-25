@@ -28,28 +28,28 @@ class BookTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.bookArr.removeAll()
+        getBookArr()
+        tableView.reloadData()
+    }
+
+    func getBookArr(){
         let ref = Firestore.firestore().collection("Books").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-
-//                if let d = querySnapshot?.documents[0] {
-//                    self.book?.author = d.data()["author"]
-//                    print("--------------\(d)")
-//                }
-                
                 
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-
+                    
                     
                     if let name = document.data()["name"],
-                    let author = document.data()["author"],
-                    let image = document.data()["image"]{
-                    
+                        let author = document.data()["author"],
+                        let image = document.data()["image"]{
+                        
                         
                         self.bookArr.append(Book(name: "\(name)",
                             author: "\(author)",
@@ -57,21 +57,13 @@ class BookTableViewController: UITableViewController {
                             book_image:"\(image)"))
                         
                     }
-                
+                    
                 }
                 self.tableView.reloadData()
             }
             
         }
-        
-//        print(self.bookArr[0])
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

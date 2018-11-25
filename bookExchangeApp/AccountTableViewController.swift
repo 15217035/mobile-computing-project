@@ -8,6 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import FirebaseFirestore
+
 
 class AccountTableViewController: UITableViewController {
  var userLogin = false
@@ -40,7 +43,7 @@ class AccountTableViewController: UITableViewController {
     
                 if(userLogin){
                     if(indexPath.row == 0){
-                        cell.textLabel?.text = UserDefaults.standard.string(forKey: "userid") ?? "Please login first."
+                        cell.textLabel?.text = "Hi, \(UserDefaults.standard.string(forKey: "userid") ?? "")!" 
                         if let iconImage = cell.viewWithTag(302) as? UIImageView {
                             iconImage.isHidden = false;
                         }
@@ -53,7 +56,7 @@ class AccountTableViewController: UITableViewController {
                     }
                 }else {
                 if(indexPath.row == 0){
-                    cell.textLabel?.text = "Please login first."
+                    cell.textLabel?.text = "Hi, visitor!"
                 }else if(indexPath.row == 1){
                      cell.textLabel?.text = "Log in"
                     }else {
@@ -61,13 +64,25 @@ class AccountTableViewController: UITableViewController {
                 }
                 }
         
-        if let iconImage = cell.viewWithTag(302) as? UIImageView {
-           
-            if(indexPath.row == 0){
-                iconImage.isHidden = false;
-            }else {
-                iconImage.isHidden = true;
-            }
+        if let countLabel = cell.viewWithTag(302) as? UILabel {
+//
+//            if(indexPath.row == 3 && userLogin){
+//                countLabel.isHidden = false;
+//
+//                var count:Int = 0
+//                var myUserID:String = ""
+//                myUserID = Auth.auth().currentUser!.uid
+//
+//                Firestore.firestore().collection("Users").document(myUserID).getDocument { (document, error) in
+//                    if let document = document, document.exists {
+//                        count = document.data()?["count"] as! Int
+//                    }
+//                }
+//                countLabel.text = String(count)
+//
+//            }else {
+                countLabel.isHidden = true;
+//            }
         }
         
         
@@ -92,8 +107,6 @@ class AccountTableViewController: UITableViewController {
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
-        
-
         }
     
 
@@ -117,7 +130,7 @@ class AccountTableViewController: UITableViewController {
         if (indexPath.row == 2){
             self.performSegue(withIdentifier: "showBookList", sender: self)
         }else if (indexPath.row == 3 ){
-            
+              self.performSegue(withIdentifier: "showMessage", sender: self)
         }
         }
     }

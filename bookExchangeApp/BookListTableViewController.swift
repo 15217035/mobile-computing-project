@@ -28,7 +28,6 @@ var bookArr = [myBook]()
  
     override func viewDidLoad() {
     super.viewDidLoad()
-    getBookArray()
     tableView.reloadData()
 }
 
@@ -41,13 +40,12 @@ var bookArr = [myBook]()
             for document in querySnapshot!.documents {
                 self.ownerId = document.data()["ownerId"] as! String
                 self.userID = Auth.auth().currentUser!.uid
-                self.bookArr.removeAll()
                 if self.ownerId == self.userID {
                     if let name = document.data()["name"],
                         let author = document.data()["author"]{
                         self.bookArr.append(myBook(name: "\(name)",  author: "\(author)", book_id: "\(document.documentID)"))
-                        self.tableView.reloadData()
                     }
+                     self.tableView.reloadData()
                 }
             }
         }
@@ -59,8 +57,11 @@ var bookArr = [myBook]()
         
         if(UserDefaults.standard.string(forKey: "userid") != nil){
             self.userLogin = true
+        }else {
+            self.userLogin = false
         }
         self.userID = Auth.auth().currentUser!.uid
+        self.bookArr.removeAll()
         getBookArray()
         tableView.reloadData()
     }
@@ -79,7 +80,7 @@ var bookArr = [myBook]()
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-             return bookArr.count + 1
+             return bookArr.count
         }
 
 
@@ -87,12 +88,7 @@ var bookArr = [myBook]()
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookListCell", for: indexPath)
         if(userLogin){
-            if(indexPath.row == 0){
-                cell.textLabel?.text = "+ Add new book"
-            }else {
-                let count = indexPath.row - 1 ;
-                cell.textLabel?.text = self.bookArr[count].name
-            }
+                cell.textLabel?.text = self.bookArr[indexPath.row].name
         }
         return cell
     }
@@ -101,11 +97,7 @@ var bookArr = [myBook]()
                             didSelectRowAt indexPath: IndexPath){
         
         if(userLogin){
-            if (indexPath.row == 0){
-                self.performSegue(withIdentifier: "showAddBook", sender: self)
-            }else{
                 self.performSegue(withIdentifier: "showMyBookDetail", sender: self)
-            }
         }
     }
 
@@ -119,15 +111,12 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? BookDetailViewController {
             
             var selectedIndex = tableView.indexPathForSelectedRow!
-            let count = selectedIndex.row  - 1 ;
+            let count = selectedIndex.row ;
             viewController.book_id = self.bookArr[count].book_id
             
         }
     }
-    
-    
 }
-
 }
 
 

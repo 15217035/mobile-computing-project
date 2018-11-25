@@ -31,16 +31,14 @@ class LoginViewController: UIViewController {
             
             if let user = user?.user {
                 print(user.uid)
-//                print(user.displayName)
-//                print(user.email)
-//                print(user.photoURL)
-//                print(user.phoneNumber)
                 UserDefaults.standard.set(user.email, forKey: "userid")
             }
             
             let alertController = UIAlertController(title: "Login", message: "Successfully", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {(alertAction)in  self.navigationController?.popToRootViewController(animated: true)}))
             self.present(alertController, animated: true, completion: nil)
+            
+            
         }
     }
         

@@ -34,6 +34,7 @@ class CommentTableViewController: UITableViewController {
     
     var bookname:String = ""
     var author:String = ""
+    var bookOwner:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +44,11 @@ class CommentTableViewController: UITableViewController {
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-             
-                if let name = document.data()?["name"],
-                    let author = document.data()?["author"]{
-                    self.booknameLabel.text  = "Book: \(name)" as? String;
-                    self.authorLabel.text = "Author: \(author)" as? String
-                }
+                self.bookOwner = document.data()?["ownerId"] as! String
+                self.bookname = document.data()?["name"] as! String
+                self.author = document.data()?["author"] as! String
+                self.booknameLabel.text  = "Book: \(self.bookname)"
+                self.authorLabel.text = "Author: \(self.author)"
             }
         
         let ref = Firestore.firestore().collection("Books")
@@ -57,7 +57,7 @@ class CommentTableViewController: UITableViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                
+    
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
@@ -79,8 +79,12 @@ class CommentTableViewController: UITableViewController {
             let alertController = UIAlertController(title: "Error", message: "Please login first", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-        }else{
+        }else if (commentTF.text == ""){
+            let alertController = UIAlertController(title: "Error", message: "Please input message", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
             
+        }else{
             self.myUserID = Auth.auth().currentUser!.uid
             self.myUsername = Auth.auth().currentUser!.email ?? ""
             var ref: DocumentReference? = nil
@@ -97,10 +101,46 @@ class CommentTableViewController: UITableViewController {
                         content: "\(self.commentTF.text ?? "")"))
                     self.commentTF.text = ""
                     self.tableView.reloadData()
+                    self.notification()
                 }
             }
            
         }
+    }
+    
+    
+    func notification(){
+        if self.myUserID == self.bookOwner{
+            return
+        }
+        var ref: DocumentReference? = nil
+        ref = Firestore.firestore().document("Users/\(self.bookOwner)").collection("message").addDocument(data: [
+            "bookname": self.bookname,
+            "from": self.myUsername,
+            "book_id" : self.book_id
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+                self.updateCount()
+            }
+        }
+    }
+    
+    func updateCount(){
+        var count:Int = 0
+        
+        let docRef = Firestore.firestore().collection("Users").document(self.bookOwner)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                count = document.data()?["count"] as! Int
+            }
+        }
+        
+        count = count + 1
+       
+        Firestore.firestore().collection("Users").document(self.bookOwner).setData([ "count": count], merge: true)
     }
     
     override func didReceiveMemoryWarning() {
