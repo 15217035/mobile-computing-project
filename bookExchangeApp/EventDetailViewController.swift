@@ -28,6 +28,9 @@ class EventDetailViewController: UIViewController {
     // for labelUI
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     
     // for button
@@ -59,15 +62,14 @@ class EventDetailViewController: UIViewController {
                 let image = document.data()?["image"]{
                     
                     self.eventName.text = "\(name)"
-                    
-                    
                     self.event_name = "\(name)"
                     self.start_time = "\(startDate) \(startTime)"
                     self.end_time = "\(endDate) \(endTime)"
-//                    self.event_image_filename = "\(image)"
-                    
                     self.event_addr = document.data()?["address"] as! GeoPoint
                     self.locationName = "\(location)"
+                    self.locationLabel.text = "\(location)"
+                    self.dateLabel.text = "Date: \(startDate) to \(endDate)"
+                    self.timeLabel.text = "Open Hours: \(startTime) to \(endTime)"
                     
                     // load image from firebase Storage
                     let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")

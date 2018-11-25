@@ -15,8 +15,10 @@ struct eventInfo {
     
     var name:String
     var event_id:String
-//    var event_image_url:String
     var event_image:String
+    var location:String
+    var startDate:String
+    var endDate:String
     
     
 }
@@ -43,11 +45,15 @@ class EventTableViewController: UITableViewController {
                     
                     // create a list of data
                     if let name = document.data()["name"],
-                        let image = document.data()["image"]{
-                        
+                        let image = document.data()["image"],
+                        let location = document.data()["location"],
+                        let startDate = document.data()["startDate"],
+                        let endDate = document.data()["endDate"]
+                    {
+                        print("\(location)")
                         // load a list of event array
-                        self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)", event_image:"\(image)"))
-                        
+                        self.eventArr.append(eventInfo(name: "\(name)",  event_id: "\(document.documentID)", event_image:"\(image)", location: "\(location)" , startDate: "\(startDate)", endDate: "\(endDate)"))
+//
                     }
                 }
                 self.tableView.reloadData()
@@ -103,6 +109,12 @@ class EventTableViewController: UITableViewController {
 
          if let nameLabel = cell.viewWithTag(102) as? UILabel {
             nameLabel.text = eventArr[indexPath.row].name
+        }
+        if let locationLabel = cell.viewWithTag(103) as? UILabel {
+            locationLabel.text = "Location: \(eventArr[indexPath.row].location)"
+        }
+        if let dateTimeLabel = cell.viewWithTag(104) as? UILabel {
+            dateTimeLabel.text = "From \(eventArr[indexPath.row].startDate) to \(eventArr[indexPath.row].endDate)"
         }
 
         return cell
@@ -165,3 +177,4 @@ class EventTableViewController: UITableViewController {
     }
 
 }
+

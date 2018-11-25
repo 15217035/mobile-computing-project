@@ -25,8 +25,6 @@ class CommentTableViewController: UITableViewController {
     @IBOutlet var booknameLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     
-    var items: [String] = ["Swift1", "Swift2", "Swift3"]
-    
     var commentArr = [comment]()
     
     var book_id:String = "empty"
@@ -72,7 +70,6 @@ class CommentTableViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             }
-            
         }
         }
     }
