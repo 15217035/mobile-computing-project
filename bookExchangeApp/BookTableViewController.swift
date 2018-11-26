@@ -28,14 +28,14 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getBookArr()
+
         setUpSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.bookArr.removeAll()
-   
         getBookArr()
-        initialArr = bookArr
         tableView.reloadData()
     }
     
@@ -85,14 +85,19 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
                             book_id: "\(document.documentID)",
                             book_image:"\(image)"))
                         
-                        
                     }
+    
                     
                 }
                 self.tableView.reloadData()
+                self.saveBookArr()
             }
             
         }
+    }
+    
+    func saveBookArr(){
+        initialArr = bookArr
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

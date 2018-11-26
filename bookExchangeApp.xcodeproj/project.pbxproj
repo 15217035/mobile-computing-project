@@ -25,7 +25,6 @@
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
-		C7A9675B21ABDD2000BD390A /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675921ABDD1F00BD390A /* book.png */; };
 		CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255021A7A197006D6765 /* BookListTableViewController.swift */; };
 		CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255221A7A2D3006D6765 /* LoginViewController.swift */; };
 		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
@@ -81,7 +80,6 @@
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		C7A9675921ABDD1F00BD390A /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book.png; path = ../../book.png; sourceTree = "<group>"; };
 		CD68255021A7A197006D6765 /* BookListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
 		CD68255221A7A2D3006D6765 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				CD68255221A7A2D3006D6765 /* LoginViewController.swift */,
 				A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */,
 				A3818E0921AABBD40037F71A /* NotificationTableViewController.swift */,
-				C7A9675921ABDD1F00BD390A /* book.png */,
 				A3A9D29321AC00A600B1D785 /* searchBookViewController.swift */,
 			);
 			path = bookExchangeApp;
@@ -320,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */,
-				C7A9675B21ABDD2000BD390A /* book.png in Resources */,
 				CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */,
 				C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */,
 				C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */,
