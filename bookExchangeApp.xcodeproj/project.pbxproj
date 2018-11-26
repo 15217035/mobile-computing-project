@@ -25,6 +25,7 @@
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
+		CD23974821AC1BA8009A5B41 /* Unknown in Resources */ = {isa = PBXBuildFile; fileRef = CD23974721AC1BA7009A5B41 /* Unknown */; };
 		CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255021A7A197006D6765 /* BookListTableViewController.swift */; };
 		CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255221A7A2D3006D6765 /* LoginViewController.swift */; };
 		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
@@ -80,6 +81,7 @@
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CD23974721AC1BA7009A5B41 /* Unknown */ = {isa = PBXFileReference; lastKnownFileType = file; path = Unknown; sourceTree = "<group>"; };
 		CD68255021A7A197006D6765 /* BookListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
 		CD68255221A7A2D3006D6765 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		C72C5F70219D8E7B00D3BA08 /* bookExchangeApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD23974721AC1BA7009A5B41 /* Unknown */,
 				A34351E821AAB3A200711D4C /* bookExchangeApp.entitlements */,
 				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */,
+				CD23974821AC1BA8009A5B41 /* Unknown in Resources */,
 				CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */,
 				C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */,
 				C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */,
@@ -627,13 +631,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = bookExchangeApp/bookExchangeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7YM3HLS8F2;
+				DEVELOPMENT_TEAM = 2867B572P4;
 				INFOPLIST_FILE = bookExchangeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.4097proj.bookExchangeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.edu.hkbu.comp.LS08Push;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -647,13 +652,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = bookExchangeApp/bookExchangeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7YM3HLS8F2;
+				DEVELOPMENT_TEAM = 2867B572P4;
 				INFOPLIST_FILE = bookExchangeApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.4097proj.bookExchangeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.edu.hkbu.comp.LS08Push;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

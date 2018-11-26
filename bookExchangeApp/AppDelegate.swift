@@ -57,7 +57,7 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
     let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
     
     // Print it to console
-    print("APNs device token: \(deviceTokenString)")
+    print("APNs device token!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-----------------------------!: \(deviceTokenString)")
     
     // Persist it in your backend in case it's new
 }

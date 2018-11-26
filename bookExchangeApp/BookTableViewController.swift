@@ -68,11 +68,11 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
     func getBookArr(){
         let ref = Firestore.firestore().collection("Books").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+//                print("Error getting documents: \(err)")
             } else {
                 
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+//                    print("\(document.documentID) => \(document.data())")
                     
                     
                     if let name = document.data()["name"],
@@ -88,7 +88,7 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
                     }
     
                     
-                }
+                }  
                 self.tableView.reloadData()
                 self.saveBookArr()
             }
