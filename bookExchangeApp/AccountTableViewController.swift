@@ -14,6 +14,20 @@ import FirebaseFirestore
 
 class AccountTableViewController: UITableViewController {
  var userLogin = false
+    
+    @IBOutlet weak var iconImage: UIImageView!
+    
+    @IBOutlet weak var welcomeText: UILabel!
+    
+    @IBOutlet weak var username: UILabel!
+    
+    @IBOutlet weak var uploadIconButton: UIButton!
+    
+    @IBAction func clickToUploadIcon(_ sender: Any) {
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,6 +37,17 @@ class AccountTableViewController: UITableViewController {
         if(UserDefaults.standard.string(forKey: "userid") != nil){
             self.userLogin = true
         }
+        
+        
+        if(userLogin){
+            username.isHidden = false
+            uploadIconButton.isHidden = false
+            
+        } else {
+            username.isHidden = true
+            uploadIconButton.isHidden = true
+        }
+        
             tableView.reloadData()
     }
     // MARK: - Table view data source
