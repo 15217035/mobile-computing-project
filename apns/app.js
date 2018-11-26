@@ -17,7 +17,7 @@ var deviceToken = '5311839E985FA01B56E7AD74444C0157F7F71A2745D0FB50DED665E0E882'
 var notification = new apn.Notification();
 
 // Specify your iOS app's Bundle ID (accessible within the project editor)
-notification.topic = 'my.bundle.id';
+notification.topic = 'com.4097proj.bookExchangeApp';
 
 // Set expiration to 1 hour from now (in case device is offline)
 notification.expiry = Math.floor(Date.now() / 1000) + 3600;

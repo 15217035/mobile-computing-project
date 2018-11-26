@@ -83,7 +83,7 @@ class CommentTableViewController: UITableViewController {
             let alertController = UIAlertController(title: "Error", message: "Please input message", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
-            
+            return
         }else{
             self.myUserID = Auth.auth().currentUser!.uid
             self.myUsername = Auth.auth().currentUser!.email ?? ""
