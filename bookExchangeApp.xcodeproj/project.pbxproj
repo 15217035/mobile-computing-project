@@ -11,6 +11,7 @@
 		A306FEB721A44AE1003F2394 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */; };
 		A318CC2321A8DF3300FF5468 /* AddNewBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */; };
 		A3818E0A21AABBD40037F71A /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3818E0921AABBD40037F71A /* NotificationTableViewController.swift */; };
+		A3A9D29421AC00A600B1D785 /* searchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A9D29321AC00A600B1D785 /* searchBookViewController.swift */; };
 		A776F64FC85CBE114B33E43F /* Pods_bookExchangeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3C669A92CD41E8DE3CE67E /* Pods_bookExchangeAppUITests.framework */; };
 		C72C5F72219D8E7B00D3BA08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */; };
 		C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C72C5F77219D8E7B00D3BA08 /* Main.storyboard */; };
@@ -24,11 +25,7 @@
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
-		C7A9675221ABDB8000BD390A /* event.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675121ABDB7F00BD390A /* event.png */; };
 		C7A9675B21ABDD2000BD390A /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675921ABDD1F00BD390A /* book.png */; };
-		C7A9675C21ABDD2000BD390A /* man-user.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675A21ABDD1F00BD390A /* man-user.png */; };
-		C7A9675E21ABDF2D00BD390A /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675D21ABDF2D00BD390A /* user.png */; };
-		C7A9676021ABDFBC00BD390A /* 206881.png in Resources */ = {isa = PBXBuildFile; fileRef = C7A9675F21ABDFBC00BD390A /* 206881.png */; };
 		CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255021A7A197006D6765 /* BookListTableViewController.swift */; };
 		CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255221A7A2D3006D6765 /* LoginViewController.swift */; };
 		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
@@ -63,6 +60,7 @@
 		A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBookViewController.swift; sourceTree = "<group>"; };
 		A34351E821AAB3A200711D4C /* bookExchangeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bookExchangeApp.entitlements; sourceTree = "<group>"; };
 		A3818E0921AABBD40037F71A /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		A3A9D29321AC00A600B1D785 /* searchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBookViewController.swift; sourceTree = "<group>"; };
 		B769C1B0A493C1E1C7406B1A /* Pods-bookExchangeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeAppTests/Pods-bookExchangeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9DF8C0D4685C5DD782BC9FD /* Pods-bookExchangeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bookExchangeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-bookExchangeApp/Pods-bookExchangeApp.release.xcconfig"; sourceTree = "<group>"; };
 		C72C5F6E219D8E7B00D3BA08 /* bookExchangeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookExchangeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,11 +81,7 @@
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		C7A9675121ABDB7F00BD390A /* event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = event.png; path = ../../event.png; sourceTree = "<group>"; };
 		C7A9675921ABDD1F00BD390A /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = book.png; path = ../../book.png; sourceTree = "<group>"; };
-		C7A9675A21ABDD1F00BD390A /* man-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "man-user.png"; path = "../../man-user.png"; sourceTree = "<group>"; };
-		C7A9675D21ABDF2D00BD390A /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = ../../user.png; sourceTree = "<group>"; };
-		C7A9675F21ABDFBC00BD390A /* 206881.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 206881.png; path = ../../206881.png; sourceTree = "<group>"; };
 		CD68255021A7A197006D6765 /* BookListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
 		CD68255221A7A2D3006D6765 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -189,10 +183,7 @@
 				A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */,
 				A3818E0921AABBD40037F71A /* NotificationTableViewController.swift */,
 				C7A9675921ABDD1F00BD390A /* book.png */,
-				C7A9675A21ABDD1F00BD390A /* man-user.png */,
-				C7A9675F21ABDFBC00BD390A /* 206881.png */,
-				C7A9675D21ABDF2D00BD390A /* user.png */,
-				C7A9675121ABDB7F00BD390A /* event.png */,
+				A3A9D29321AC00A600B1D785 /* searchBookViewController.swift */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -329,10 +320,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */,
-				C7A9676021ABDFBC00BD390A /* 206881.png in Resources */,
-				C7A9675C21ABDD2000BD390A /* man-user.png in Resources */,
-				C7A9675E21ABDF2D00BD390A /* user.png in Resources */,
-				C7A9675221ABDB8000BD390A /* event.png in Resources */,
 				C7A9675B21ABDD2000BD390A /* book.png in Resources */,
 				CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */,
 				C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */,
@@ -467,6 +454,7 @@
 				C74D507321A962F600558F62 /* CommentTableViewController.swift in Sources */,
 				CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */,
 				A318CC2321A8DF3300FF5468 /* AddNewBookViewController.swift in Sources */,
+				A3A9D29421AC00A600B1D785 /* searchBookViewController.swift in Sources */,
 				C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

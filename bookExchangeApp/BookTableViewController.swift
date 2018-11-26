@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+
 struct Book {
     
     var name:String
@@ -19,21 +20,49 @@ struct Book {
     
 }
 
-
-
-class BookTableViewController: UITableViewController {
+class BookTableViewController: UITableViewController, UISearchBarDelegate{
     var bookArr = [Book]()
-    
-//    var book:Book?
+    var initialArr = [Book]()
+ 
+    @IBOutlet var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.bookArr.removeAll()
+   
         getBookArr()
+        initialArr = bookArr
         tableView.reloadData()
+    }
+    
+//Search bar
+    private func setUpSearchBar(){
+        let searchBar = UISearchBar(frame: CGRect(x:0,y:0,width:(UIScreen.main.bounds.width),height:70))
+        searchBar.delegate = self
+        self.tableView.tableHeaderView = searchBar
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            bookArr = initialArr
+            self.tableView.reloadData()
+        }else {
+            filterTableView(text:searchText)
+        }
+    }
+    
+
+    func filterTableView(text:String) {
+            //fix of not searching when backspacing
+            bookArr = bookArr.filter({ (model) -> Bool in
+                return model.name.lowercased().contains(text.lowercased())
+            })
+         self.tableView.reloadData()
     }
 
     func getBookArr(){
@@ -55,6 +84,7 @@ class BookTableViewController: UITableViewController {
                             author: "\(author)",
                             book_id: "\(document.documentID)",
                             book_image:"\(image)"))
+                        
                         
                     }
                     
@@ -113,12 +143,10 @@ class BookTableViewController: UITableViewController {
         }
         
         if let cellLabel = cell.viewWithTag(111) as? UILabel {
-            print("111")
             cellLabel.text = self.bookArr[indexPath.row].name
         }
         
         if let cellLabel = cell.viewWithTag(112) as? UILabel {
-            print("112")
             cellLabel.text = self.bookArr[indexPath.row].author
         }
         

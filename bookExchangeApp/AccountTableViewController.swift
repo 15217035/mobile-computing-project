@@ -19,7 +19,7 @@ class AccountTableViewController: UITableViewController {
     
     @IBOutlet weak var welcomeText: UILabel!
     
-    @IBOutlet weak var username: UILabel!
+    @IBOutlet var usernameLabel: UILabel!
     
     @IBOutlet weak var uploadIconButton: UIButton!
     
@@ -36,17 +36,13 @@ class AccountTableViewController: UITableViewController {
         
         if(UserDefaults.standard.string(forKey: "userid") != nil){
             self.userLogin = true
-        }
-        
-        
-        if(userLogin){
-            username.isHidden = false
-            uploadIconButton.isHidden = false
-            
-        } else {
-            username.isHidden = true
+              uploadIconButton.isHidden = false
+        }else {
+            userLogin = false
             uploadIconButton.isHidden = true
         }
+        
+        
         
             tableView.reloadData()
     }
@@ -59,32 +55,27 @@ class AccountTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 3
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
     
+        usernameLabel.text = UserDefaults.standard.string(forKey: "userid") ?? "Visitor"
+        
                 if(userLogin){
                     if(indexPath.row == 0){
-                        cell.textLabel?.text = "Hi, \(UserDefaults.standard.string(forKey: "userid") ?? "")!" 
-                        if let iconImage = cell.viewWithTag(302) as? UIImageView {
-                            iconImage.isHidden = false;
-                        }
-                    }else if(indexPath.row == 1){
                         cell.textLabel?.text = "Log out"
-                    }else if (indexPath.row == 2){
+                    }else if (indexPath.row == 1){
                         cell.textLabel?.text = "My book list"
-                    }else if (indexPath.row == 3){
+                    }else if (indexPath.row == 2){
                         cell.textLabel?.text = "Notification"
                     }
                 }else {
                 if(indexPath.row == 0){
-                    cell.textLabel?.text = "Hi, visitor!"
-                }else if(indexPath.row == 1){
-                     cell.textLabel?.text = "Log in"
-                    }else {
+                   cell.textLabel?.text = "Log in"
+                }else {
                       cell.textLabel?.text = ""
                 }
                 }
@@ -140,7 +131,7 @@ class AccountTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath){
         
-        if(indexPath.row == 1){
+        if(indexPath.row == 0){
             if(userLogin){
                 let alertController = UIAlertController(title: "Logout", message: "Are you Sure?", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
@@ -152,9 +143,9 @@ class AccountTableViewController: UITableViewController {
         }
         
         if(userLogin){
-        if (indexPath.row == 2){
+        if (indexPath.row == 1){
             self.performSegue(withIdentifier: "showBookList", sender: self)
-        }else if (indexPath.row == 3 ){
+        }else if (indexPath.row == 2 ){
               self.performSegue(withIdentifier: "showMessage", sender: self)
         }
         }

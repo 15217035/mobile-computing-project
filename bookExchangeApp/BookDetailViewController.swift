@@ -32,6 +32,8 @@ class BookDetailViewController: UIViewController {
         
         let docRef = db.collection("Books").document(book_id)
         
+  
+        
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
 //                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
