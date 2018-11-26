@@ -37,11 +37,14 @@ class BookDetailViewController: UIViewController {
 //                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 //                print("Document data: \(dataDescription)")
                 
-                if let name = document.data()?["name"],
-                let image = document.data()?["image"]{
-                self.bookName.text = "\(name)"
-                    
-                    
+               if let name = document.data()?["name"],
+                let image = document.data()?["image"],
+                let author = document.data()?["author"],
+                let detail = document.data()?["detail"]
+                {
+                    self.bookName.text = "\(name)"
+                     self.bookAuthor.text = "\(author)"
+                     self.bookDetail.text = "\(detail)"
                     
                     // load image from firebase Storage
                     let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")

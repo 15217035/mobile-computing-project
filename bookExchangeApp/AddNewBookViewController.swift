@@ -17,6 +17,7 @@ class AddNewBookViewController: UIViewController {
     @IBOutlet var bookNameTF: UITextField!
     @IBOutlet var authorTF: UITextField!
     
+    @IBOutlet var detailTF: UITextField!
     @IBOutlet weak var checkPhotoUpload: UILabel!
     @IBOutlet weak var photoUploadImage: UIImageView!
     
@@ -36,6 +37,14 @@ class AddNewBookViewController: UIViewController {
     }
     
     @IBAction func addBookClicked(_ sender: Any) {
+        if(bookNameTF.text == "" || authorTF.text == "" || detailTF.text == "" ){
+            let alertController = UIAlertController(title: "Error", message: "Please input all the fields.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        
         let image_set_name:String = "\(self.userID) \(bookNameTF.text ?? "123").jpg"
         
         var ref: DocumentReference? = nil
@@ -43,7 +52,8 @@ class AddNewBookViewController: UIViewController {
             "name": bookNameTF.text ?? "",
             "author": authorTF.text ?? "",
             "ownerId": self.userID,
-            "image": image_set_name
+            "image": image_set_name,
+            "detail": detailTF.text ?? "",
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
