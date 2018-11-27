@@ -25,10 +25,15 @@
 		C7A5B1AD21A57042001BDA67 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */; };
 		C7A5B1AF21A57BBD001BDA67 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */; };
 		C7A5B1B121A5814A001BDA67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5B1B021A5814A001BDA67 /* MapViewController.swift */; };
+		CD18E16221ACD9C700411B5E /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = CD18E16121ACD9C700411B5E /* message.png */; };
+		CD18E16421ACEB0500411B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD18E16321ACEB0500411B5E /* GoogleService-Info.plist */; };
 		CD23974821AC1BA8009A5B41 /* Unknown in Resources */ = {isa = PBXBuildFile; fileRef = CD23974721AC1BA7009A5B41 /* Unknown */; };
+		CD5123D821ACD538007A96AB /* camera-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123D721ACD538007A96AB /* camera-7.png */; };
+		CD5123DA21ACD55A007A96AB /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123D921ACD55A007A96AB /* home-7.png */; };
+		CD5123DC21ACD5E1007A96AB /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123DB21ACD5E1007A96AB /* man.png */; };
+		CD5123DE21ACD603007A96AB /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123DD21ACD603007A96AB /* bookmark.png */; };
 		CD68255121A7A197006D6765 /* BookListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255021A7A197006D6765 /* BookListTableViewController.swift */; };
 		CD68255321A7A2D3006D6765 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68255221A7A2D3006D6765 /* LoginViewController.swift */; };
-		CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */; };
 		DB2F73CDF96722C93790CEAE /* Pods_bookExchangeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,10 +86,16 @@
 		C7A5B1AC21A57042001BDA67 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C7A5B1B021A5814A001BDA67 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CD18E16121ACD9C700411B5E /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		CD18E16321ACEB0500411B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD23974721AC1BA7009A5B41 /* Unknown */ = {isa = PBXFileReference; lastKnownFileType = file; path = Unknown; sourceTree = "<group>"; };
+		CD5123D621ACD52F007A96AB /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-7.png"; sourceTree = "<group>"; };
+		CD5123D721ACD538007A96AB /* camera-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-7.png"; sourceTree = "<group>"; };
+		CD5123D921ACD55A007A96AB /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-7.png"; sourceTree = "<group>"; };
+		CD5123DB21ACD5E1007A96AB /* man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = man.png; sourceTree = "<group>"; };
+		CD5123DD21ACD603007A96AB /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
 		CD68255021A7A197006D6765 /* BookListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListTableViewController.swift; sourceTree = "<group>"; };
 		CD68255221A7A2D3006D6765 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD50874D5E00B188F6413381 /* Pods_bookExchangeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bookExchangeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,11 +175,17 @@
 		C72C5F70219D8E7B00D3BA08 /* bookExchangeApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD5123DB21ACD5E1007A96AB /* man.png */,
+				CD5123D721ACD538007A96AB /* camera-7.png */,
+				CD5123D621ACD52F007A96AB /* calendar-7.png */,
+				CD18E16121ACD9C700411B5E /* message.png */,
+				CD5123D921ACD55A007A96AB /* home-7.png */,
+				CD5123DD21ACD603007A96AB /* bookmark.png */,
 				CD23974721AC1BA7009A5B41 /* Unknown */,
 				A34351E821AAB3A200711D4C /* bookExchangeApp.entitlements */,
-				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
 				C72C5FA1219D905800D3BA08 /* BookTableViewController.swift */,
 				C72C5FA3219D94FC00D3BA08 /* EventTableViewController.swift */,
+				C72C5F71219D8E7B00D3BA08 /* AppDelegate.swift */,
 				C72C5F77219D8E7B00D3BA08 /* Main.storyboard */,
 				C74D507221A962F600558F62 /* CommentTableViewController.swift */,
 				C7A5B1AE21A57BBD001BDA67 /* EventDetailViewController.swift */,
@@ -176,7 +193,6 @@
 				C72C5F7A219D8E7E00D3BA08 /* Assets.xcassets */,
 				C72C5F7C219D8E7E00D3BA08 /* LaunchScreen.storyboard */,
 				C72C5F7F219D8E7E00D3BA08 /* Info.plist */,
-				CDBD6452219E7D1500B238F6 /* GoogleService-Info.plist */,
 				A306FEB621A44AE1003F2394 /* AccountTableViewController.swift */,
 				C7A5B1B021A5814A001BDA67 /* MapViewController.swift */,
 				CD68255021A7A197006D6765 /* BookListTableViewController.swift */,
@@ -184,6 +200,7 @@
 				A318CC2221A8DF3300FF5468 /* AddNewBookViewController.swift */,
 				A3818E0921AABBD40037F71A /* NotificationTableViewController.swift */,
 				A3A9D29321AC00A600B1D785 /* searchBookViewController.swift */,
+				CD18E16321ACEB0500411B5E /* GoogleService-Info.plist */,
 			);
 			path = bookExchangeApp;
 			sourceTree = "<group>";
@@ -321,9 +338,14 @@
 			files = (
 				C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */,
 				CD23974821AC1BA8009A5B41 /* Unknown in Resources */,
-				CDBD6453219E7D1500B238F6 /* GoogleService-Info.plist in Resources */,
+				CD5123DE21ACD603007A96AB /* bookmark.png in Resources */,
+				CD5123DA21ACD55A007A96AB /* home-7.png in Resources */,
 				C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */,
+				CD5123D821ACD538007A96AB /* camera-7.png in Resources */,
+				CD5123DC21ACD5E1007A96AB /* man.png in Resources */,
+				CD18E16421ACEB0500411B5E /* GoogleService-Info.plist in Resources */,
 				C72C5F79219D8E7B00D3BA08 /* Main.storyboard in Resources */,
+				CD18E16221ACD9C700411B5E /* message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +395,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -387,6 +410,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PushNotifications.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -633,7 +657,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2867B572P4;
 				INFOPLIST_FILE = bookExchangeApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -654,7 +678,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2867B572P4;
 				INFOPLIST_FILE = bookExchangeApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

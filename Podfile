@@ -10,6 +10,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
+pod 'PushNotifications'
 
   target 'bookExchangeAppTests' do
     inherit! :search_paths

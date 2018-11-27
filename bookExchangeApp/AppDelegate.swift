@@ -7,7 +7,7 @@
 //
 import UIKit
 import Firebase
-import UserNotifications
+import PushNotifications
 
     @UIApplicationMain
 
@@ -15,19 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var window: UIWindow?
         
-        func application(_ application: UIApplication,
-                         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)
-            -> Bool {
+        let pushNotifications = PushNotifications.shared
+        
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
                 
-                //...
-                FirebaseApp.configure()
                  UserDefaults.standard.set(nil, forKey: "userid")
                 
-                UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+//                UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
                 application.registerForRemoteNotifications()
                 
+                  FirebaseApp.configure()
+                
+                self.pushNotifications.start(instanceId: "e259b834-189f-4848-afed-0563de7ec4e1")
+                self.pushNotifications.registerForRemoteNotifications()
+                try? self.pushNotifications.subscribe(interest: "hello")
+                
                 return true
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -42,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -52,15 +56,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+//func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//    // Convert token to string
+//    let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+//
+//    // Print it to console
+//    print("APNs device token!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-----------------------------!: \(deviceTokenString)")
+//
+//    // Persist it in your backend in case it's new
+//}
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    // Convert token to string
-    let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-    
-    // Print it to console
-    print("APNs device token!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-----------------------------!: \(deviceTokenString)")
-    
-    // Persist it in your backend in case it's new
+      let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+//    self.pushNotifications.registerDeviceToken(deviceToken)
+    print("APNs device token: \(deviceTokenString)")
 }
+
 
 // Called when APNs failed to register the device for push notifications
 func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -68,8 +78,9 @@ func application(_ application: UIApplication, didFailToRegisterForRemoteNotific
     print("APNs registration failed: \(error)")
 }
 
-func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-    // Print notification payload data
-    print("Push notification received: \(data)")
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+  
+    self.pushNotifications.handleNotification(userInfo: userInfo)
 }
 
+}

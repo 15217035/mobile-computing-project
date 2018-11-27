@@ -11,7 +11,6 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-
 class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookName: UILabel!
     
@@ -24,6 +23,7 @@ class BookDetailViewController: UIViewController {
     var userLogin = false
     
     var book_id:String = "0001"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

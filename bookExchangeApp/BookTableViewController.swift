@@ -28,8 +28,7 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getBookArr()
-
+       // getBookArr()
         setUpSearchBar()
     }
     
@@ -126,12 +125,12 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
         if let cellImage = cell.viewWithTag(110) as? UIImageView {
             
             // load a list of image from firebase Storage
-            let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+            let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
             let storageRef = storage.reference()
             
             let fileName = bookArr[indexPath.row].book_image
             
-            let ImageRef = storageRef.child("book")
+            let ImageRef = storageRef.child("Book")
             
             let eventImageRef = ImageRef.child(fileName)
             

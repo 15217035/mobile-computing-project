@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>229992928848-mnjuh7c5eblc32m46mrbff17tq68anit.apps.googleusercontent.com</string>
+	<string>988123618744-c2udbt04avjh41upoq23bc3r3fk3ghvi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.229992928848-mnjuh7c5eblc32m46mrbff17tq68anit</string>
+	<string>com.googleusercontent.apps.988123618744-c2udbt04avjh41upoq23bc3r3fk3ghvi</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDzmd05vS-ulFOxoPsi4Uw9FS7Rrn3oiUQ</string>
+	<string>AIzaSyBU3RUlO9kr4nGI4-oyRDxFsiBY4QIiQC4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>229992928848</string>
+	<string>988123618744</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.4097proj.bookExchangeApp</string>
+	<string>hk.edu.hkbu.comp.LS08Push</string>
 	<key>PROJECT_ID</key>
-	<string>bookexchangeapp-1d759</string>
+	<string>bookcomment-5a437</string>
 	<key>STORAGE_BUCKET</key>
-	<string>bookexchangeapp-1d759.appspot.com</string>
+	<string>bookcomment-5a437.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:229992928848:ios:3e4d2ad2a79c57b8</string>
+	<string>1:988123618744:ios:1c47bc0e608d5053</string>
 	<key>DATABASE_URL</key>
-	<string>https://bookexchangeapp-1d759.firebaseio.com</string>
+	<string>https://bookcomment-5a437.firebaseio.com</string>
 </dict>
 </plist>
