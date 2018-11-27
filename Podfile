@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod 'PushNotifications'
+pod 'Alamofire'
 
   target 'bookExchangeAppTests' do
     inherit! :search_paths

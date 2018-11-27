@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
-
+import Alamofire
 
 struct comment {
     
@@ -39,6 +39,8 @@ class CommentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+        
         
         let docRef = Firestore.firestore().collection("Books").document(book_id)
         
@@ -102,9 +104,30 @@ class CommentTableViewController: UITableViewController {
                     self.commentTF.text = ""
                     self.tableView.reloadData()
                     self.notification()
+                    self.push()
                 }
             }
            
+        }
+    }
+    
+    func push(){
+        
+        let url = "http://158.182.12.161:1337/Message/received"
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            
+            print("Result: \(response.result)") // response serialization result
+            
+            switch response.result {
+                
+            case .success(let value):
+                
+                print("JSON: \(value)")     // serialized json response
+                
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     

@@ -72,7 +72,7 @@ class AddNewBookViewController: UIViewController {
         
         // Create a reference to the file you want to upload
         let storageRef = Storage.storage().reference()
-        let folderRef = storageRef.child("book")
+        let folderRef = storageRef.child("Book")
         let riversRef = folderRef.child(image_set_name)
         
         // Upload the file to the path "images/rivers.jpg"

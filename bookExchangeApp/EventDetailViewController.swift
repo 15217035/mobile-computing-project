@@ -72,12 +72,12 @@ class EventDetailViewController: UIViewController {
                     self.timeLabel.text = "Open Hours: \(startTime) to \(endTime)"
                     
                     // load image from firebase Storage
-                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+                    let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
                     let storageRef = storage.reference()
                     
                     let fileName = "\(image)"
                     
-                    let ImageRef = storageRef.child("event")
+                    let ImageRef = storageRef.child("Event")
                         
                     let eventImageRef = ImageRef.child(fileName)
                     

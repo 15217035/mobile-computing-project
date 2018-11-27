@@ -49,12 +49,12 @@ class BookDetailViewController: UIViewController {
                      self.bookDetail.text = "\(detail)"
                     
                     // load image from firebase Storage
-                    let storage = Storage.storage(url:"gs://bookexchangeapp-1d759.appspot.com")
+                    let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
                     let storageRef = storage.reference()
                     
                     let fileName = "\(image)"
                     
-                    let ImageRef = storageRef.child("book")
+                    let ImageRef = storageRef.child("Book")
                     
                     let eventImageRef = ImageRef.child(fileName)
                     

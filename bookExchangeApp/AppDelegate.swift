@@ -7,7 +7,10 @@
 //
 import UIKit
 import Firebase
+import UserNotifications
 import PushNotifications
+import FirebaseFirestore
+import FirebaseAuth
 
     @UIApplicationMain
 
@@ -17,14 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let pushNotifications = PushNotifications.shared
         
+        var myUserID = ""
+        
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
                 
                  UserDefaults.standard.set(nil, forKey: "userid")
-                
-//                UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+
                 application.registerForRemoteNotifications()
                 
-                  FirebaseApp.configure()
+                FirebaseApp.configure()
                 
                 self.pushNotifications.start(instanceId: "e259b834-189f-4848-afed-0563de7ec4e1")
                 self.pushNotifications.registerForRemoteNotifications()
@@ -69,6 +73,10 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
       let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
 //    self.pushNotifications.registerDeviceToken(deviceToken)
     print("APNs device token: \(deviceTokenString)")
+    
+    let ref = Firestore.firestore()
+    ref.child("Users").updateDocumentValues(["token": deviceTokenString])
+    
 }
 
 
