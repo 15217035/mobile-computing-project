@@ -14,6 +14,28 @@ module.exports = {
     received: function (req, res) {
 
         
+        var token1 = ""
+        var message1 = ""
+
+        var arr = { message: 'yu@gmail.com send you a message.',
+        token: '364E9F4966BCD6E8C7189D238143AB28EA6B9C5BD146280C690EEEEDC5AF46ED' }
+
+        console.log(arr.token)
+        
+        console.log(req.body)
+        console.log(req.body.message)
+
+        console.log(req.body.token)
+
+        if( req.method == "POST" ){
+
+            message1 = req.body.message 
+           token1 = req.body.token 
+           
+        }
+        
+        
+
         var apn = require('apn');
 
         // Set up apn with the APNs Auth Key
@@ -27,8 +49,8 @@ module.exports = {
         });
 
         // Enter the device token from the Xcode console
-        var deviceToken = '364E9F4966BCD6E8C7189D238143AB28EA6B9C5BD146280C690EEEEDC5AF46ED';
-
+        // var deviceToken = '364E9F4966BCD6E8C7189D238143AB28EA6B9C5BD146280C690EEEEDC5AF46ED';
+        var deviceToken = token1
         // Prepare a new notification
         var notification = new apn.Notification();
 
@@ -45,7 +67,7 @@ module.exports = {
         notification.sound = 'ping.aiff';
 
         // Display the following message (the actual notification text, supports emoji)
-        notification.alert = 'Hello World \u270C';
+        notification.alert = message1;
 
         // Send any extra payload data with the notification which will be accessible to your app in didReceiveRemoteNotification
         notification.payload = { id: 123 };

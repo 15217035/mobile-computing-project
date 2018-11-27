@@ -74,10 +74,22 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 //    self.pushNotifications.registerDeviceToken(deviceToken)
     print("APNs device token: \(deviceTokenString)")
     
-    let ref = Firestore.firestore()
-    ref.child("Users").updateDocumentValues(["token": deviceTokenString])
+    self.myUserID = Auth.auth().currentUser!.uid
     
+    let ref = Firestore.firestore().collection("Users").document(self.myUserID)
+    ref.updateData([
+        "token":deviceTokenString
+    ]) { err in
+        if let err = err {
+            print("Error updating document: \(err)")
+        } else {
+            print("Document successfully updated")
+            UserDefaults.standard.set(deviceTokenString, forKey: "token")
+        }
+    }
 }
+        
+  
 
 
 // Called when APNs failed to register the device for push notifications

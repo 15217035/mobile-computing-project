@@ -103,8 +103,8 @@ class CommentTableViewController: UITableViewController {
                         content: "\(self.commentTF.text ?? "")"))
                     self.commentTF.text = ""
                     self.tableView.reloadData()
-                    self.notification()
                     self.push()
+                  
                 }
             }
            
@@ -113,10 +113,39 @@ class CommentTableViewController: UITableViewController {
     
     func push(){
         
+        
+        
+ var token = ""
+//
+//        var message = "\(self.myUsername) send you a message."
+        
+        let ref = Firestore.firestore().collection("Users/\(self.bookOwner)").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                   token = document.data()["token"] as! String
+                }
+            }
+            }
+            
+        
+       print(UserDefaults.standard.string(forKey: "token"))
+//
+        let parameters: [String: AnyObject] = [
+            "token" : token as AnyObject ,
+            "message" : "\(self.myUsername) send you a message." as AnyObject
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        
+        print(parameters)
+        
+        
         let url = "http://158.182.12.161:1337/Message/received"
         
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
-            
+        Alamofire.request(url, method: .post, parameters: parameters).validate().responseJSON { response in
+        
             print("Result: \(response.result)") // response serialization result
             
             switch response.result {
@@ -149,6 +178,9 @@ class CommentTableViewController: UITableViewController {
                 self.updateCount()
             }
         }
+          self.push()
+        
+        
     }
     
     func updateCount(){
