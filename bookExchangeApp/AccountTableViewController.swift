@@ -48,55 +48,62 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
             self.userLogin = true
              uploadIconBtn.isHidden = false
             self.myUserID = Auth.auth().currentUser!.uid
-            let ref = Firestore.firestore().collection("Users").document("\(self.myUserID)").getDocument{ (document, error) in
-                if let document = document, document.exists {
-                    if let icon = document.data()?["icon"] {
-                        let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
-                        let storageRef = storage.reference()
-                        let fileName = icon
-                        
-                        let ImageRef = storageRef.child("User")
-                        
-                        let eventImageRef = ImageRef.child(fileName as! String)
-                        
-                        eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                            if let error = error {
-                                print("error: \(error.localizedDescription)")
-                            } else {
-                                self.iconImage.image = UIImage(data: data!)!
-                                self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
-                                self.iconImage.clipsToBounds = true
-                        }
-                        }
-                    }
-                }
-            }
+            self.setUserIcon()
         }else {
             userLogin = false
             uploadIconBtn.isHidden = true
-            let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
-            let storageRef = storage.reference()
-            let fileName = "default.jpg"
-            
-            let ImageRef = storageRef.child("User")
-            
-            let eventImageRef = ImageRef.child(fileName)
-            
-            eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if let error = error {
-                    print("error: \(error.localizedDescription)")
-                } else {
-                    self.iconImage.image = UIImage(data: data!)!
-                    self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
-                    self.iconImage.clipsToBounds = true
-                }
-            }
+            self.setDefaultIcon()
         }
         view.reloadInputViews()
         tableView.reloadData()
     }
     // MARK: - Table view data source
 
+    func setUserIcon(){
+        let ref = Firestore.firestore().collection("Users").document("\(self.myUserID)").getDocument{ (document, error) in
+            if let document = document, document.exists {
+                if let icon = document.data()?["icon"] {
+                    let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
+                    let storageRef = storage.reference()
+                    let fileName = icon
+                    
+                    let ImageRef = storageRef.child("User")
+                    
+                    let eventImageRef = ImageRef.child(fileName as! String)
+                    
+                    eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print("error: \(error.localizedDescription)")
+                        } else {
+                            self.iconImage.image = UIImage(data: data!)!
+                            self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
+                            self.iconImage.clipsToBounds = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func setDefaultIcon(){
+        let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
+        let storageRef = storage.reference()
+        let fileName = "default.jpg"
+        
+        let ImageRef = storageRef.child("User")
+        
+        let eventImageRef = ImageRef.child(fileName)
+        
+        eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            } else {
+                self.iconImage.image = UIImage(data: data!)!
+                self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
+                self.iconImage.clipsToBounds = true
+            }
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -141,6 +148,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
             UserDefaults.standard.set(nil, forKey: "userid")
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
+            self.setDefaultIcon()
             tableView.reloadData()
            
         } catch let signOutError as NSError {
