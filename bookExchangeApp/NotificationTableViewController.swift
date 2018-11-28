@@ -69,7 +69,7 @@ class NotificationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath)
 
-        cell.textLabel?.text = "\(messageArr[indexPath.row].from) send you a message about \(messageArr[indexPath.row].bookname)"
+        cell.textLabel?.text = "\(messageArr[indexPath.row].from) leave a message in \(messageArr[indexPath.row].bookname) chatroom"
 
         return cell
     }

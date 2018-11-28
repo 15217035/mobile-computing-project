@@ -19,7 +19,7 @@ struct comment {
     
 }
 
-class CommentTableViewController: UITableViewController {
+class CommentTableViewController: UITableViewController{
     
     @IBOutlet var commentTF: UITextField!
     @IBOutlet var booknameLabel: UILabel!
@@ -39,8 +39,6 @@ class CommentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
-        
         
         let docRef = Firestore.firestore().collection("Books").document(book_id)
         
@@ -75,6 +73,7 @@ class CommentTableViewController: UITableViewController {
         }
         }
     }
+    
 
     @IBAction func postClicked(_ sender: Any) {
         if(UserDefaults.standard.string(forKey: "userid") == nil){
@@ -107,17 +106,12 @@ class CommentTableViewController: UITableViewController {
                   
                 }
             }
-           
         }
     }
     
     func push(){
         
-        
-        
- var token = ""
-        
-        
+        var token = ""
         
         let ref = Firestore.firestore().collection("Users").document("\(self.bookOwner)").getDocument{ (document, error) in
             if let document = document, document.exists {
@@ -130,7 +124,6 @@ class CommentTableViewController: UITableViewController {
                     ]
                     print(parameters)
                     
-                    
                     let url = "http://158.182.12.165:1337/Message/received"
                     
                     Alamofire.request(url, method: .post, parameters: parameters).validate().responseJSON { response in
@@ -142,6 +135,7 @@ class CommentTableViewController: UITableViewController {
                         case .success(let value):
                             
                             print("JSON: \(value)")     // serialized json response
+                            self.notification()
                             
                         case .failure(let error):
                             print(error)
@@ -149,9 +143,7 @@ class CommentTableViewController: UITableViewController {
                     }
                 }
             }
-            }
-            
-
+        }
     }
     
     
@@ -169,29 +161,10 @@ class CommentTableViewController: UITableViewController {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(ref!.documentID)")
-                self.updateCount()
             }
         }
-          self.push()
-        
-        
     }
-    
-    func updateCount(){
-        var count:Int = 0
         
-        let docRef = Firestore.firestore().collection("Users").document(self.bookOwner)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                count = document.data()?["count"] as! Int
-            }
-        }
-        
-        count = count + 1
-       
-        Firestore.firestore().collection("Users").document(self.bookOwner).setData([ "count": count], merge: true)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -36,6 +36,7 @@ class AddNewBookViewController: UIViewController {
         self.userID = Auth.auth().currentUser!.uid
     }
     
+
     @IBAction func addBookClicked(_ sender: Any) {
         if(bookNameTF.text == "" || authorTF.text == "" || detailTF.text == "" ){
             let alertController = UIAlertController(title: "Error", message: "Please input all the fields.", preferredStyle: .alert)

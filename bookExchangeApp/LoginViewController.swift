@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
             UIApplication.shared.registerForRemoteNotifications()
             
         }
+        
+        
+        
+        
     }
         
     

@@ -10,10 +10,15 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestore
+import Photos
 
+class AccountTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
-class AccountTableViewController: UITableViewController {
- var userLogin = false
+    var userLogin = false
+    
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var uploadIconBtn: UIButton!
     
     @IBOutlet weak var iconImage: UIImageView!
     
@@ -21,12 +26,14 @@ class AccountTableViewController: UITableViewController {
     
     @IBOutlet var usernameLabel: UILabel!
     
-    @IBOutlet weak var uploadIconButton: UIButton!
+   var icon:UIImage = UIImage()
     
-    @IBAction func clickToUploadIcon(_ sender: Any) {
-        
-        
-    }
+    let iconPicker = UIImagePickerController()
+    
+     let nav = UINavigationController()
+    
+    var myUserID:String = ""
+    var myUsername:String = UserDefaults.standard.string(forKey: "userid") as! String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +41,38 @@ class AccountTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         
+     
+       
         if(UserDefaults.standard.string(forKey: "userid") != nil){
             self.userLogin = true
-              uploadIconButton.isHidden = false
+             uploadIconBtn.isHidden = false
+            self.myUserID = Auth.auth().currentUser!.uid
+            let ref = Firestore.firestore().collection("Users").document("\(self.myUserID)").getDocument{ (document, error) in
+                if let document = document, document.exists {
+                    if let icon = document.data()?["icon"] {
+                        let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
+                        let storageRef = storage.reference()
+                        let fileName = icon
+                        
+                        let ImageRef = storageRef.child("Users")
+                        
+                        let eventImageRef = ImageRef.child(fileName as! String)
+                        
+                        eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                            if let error = error {
+                                print("error: \(error.localizedDescription)")
+                            } else {
+                                self.iconImage.image = UIImage(data: data!)!
+                            }
+                        }
+                    }
+                }
+            }
         }else {
             userLogin = false
-            uploadIconButton.isHidden = true
+            uploadIconBtn.isHidden = true
         }
-        
-        
-        
-            tableView.reloadData()
+        tableView.reloadData()
     }
     // MARK: - Table view data source
 
@@ -80,30 +108,6 @@ class AccountTableViewController: UITableViewController {
                 }
                 }
         
-        if let countLabel = cell.viewWithTag(302) as? UILabel {
-//
-//            if(indexPath.row == 3 && userLogin){
-//                countLabel.isHidden = false;
-//
-//                var count:Int = 0
-//                var myUserID:String = ""
-//                myUserID = Auth.auth().currentUser!.uid
-//
-//                Firestore.firestore().collection("Users").document(myUserID).getDocument { (document, error) in
-//                    if let document = document, document.exists {
-//                        count = document.data()?["count"] as! Int
-//                    }
-//                }
-//                countLabel.text = String(count)
-//
-//            }else {
-                countLabel.isHidden = true;
-//            }
-        }
-        
-        
-        
-       
         return cell
     }
     
@@ -150,9 +154,157 @@ class AccountTableViewController: UITableViewController {
         }
         }
     }
+    
+    
+    
+    @IBAction func uploadIconClicked(_ sender: Any) {
+        let alertController = UIAlertController(title: "Upload my Icon", message: "Choose upload method", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "From Library", style: .default, handler: {action in
+            self.uploadIconByLibrary()}))
+        
+        alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
+            self.uploadIconByCamera(true)}))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func saveIcon(){
+        
+        let image_set_name:String = "\(self.myUserID) \(self.myUsername).jpg"
+        
+            let ref = Firestore.firestore().collection("Users").document(myUserID)
+            ref.updateData([
+                "icon":image_set_name
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+            }
+        
+        let imageData: Data = UIImagePNGRepresentation(icon)!
+
+        let storageRef = Storage.storage().reference()
+        let folderRef = storageRef.child("Book")
+        let riversRef = folderRef.child(image_set_name)
+        
+        // Upload the file to the path "images/rivers.jpg"
+        _ = riversRef.putData(imageData, metadata: nil) { metadata, error in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            // Metadata contains file metadata such as size, content-type.
+            _ = metadata.size
+            // You can also access to download URL after upload.
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+            }
+        }
+    }
+
+    func addPhotoFromLibaryGo(){
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            print("can't open photo library")
+            return
+        }
+        
+        iconPicker.sourceType = .photoLibrary
+        iconPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(iconPicker, animated: true)
+     
+    }
+    
+    func addPhotoFromCameraGo(){
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("camera not supported by this device")
+            return
+        }
+        iconPicker.sourceType = .camera
+        iconPicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(iconPicker, animated: true)
+   
+    }
+
+    func uploadIconByLibrary(){
+
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        case .authorized:
+            self.addPhotoFromLibaryGo()
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in print("status is \(newStatus)")
+                if newStatus == PHAuthorizationStatus.authorized {
+                    print("success")
+                    self.addPhotoFromLibaryGo()
+                }
+            })
+        case .restricted:
+            print("User do not have access to photo album.")
+        case .denied:
+            print("User has denied the permission.")
+            
+        }
+    }
+    
+    func addAlertForSettings(){
+        let alert = UIAlertController(title: "Alert", message: "We need the permission", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "I'll do it later", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func uploadIconByCamera(_ sender: Any) {
+        
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status{
+        case .authorized: // The user has previously granted access to the camera.
+            self.addPhotoFromCameraGo()
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.addPhotoFromCameraGo()
+                } else {
+                    self.addAlertForSettings()
+                }
+            }
+            //denied - The user has previously denied access.
+        //restricted - The user can't grant access due to restrictions.
+        case .denied, .restricted:
+            self.addAlertForSettings()
+            return
+            
+        default:
+            break
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        defer {
+            picker.dismiss(animated: true)
+        }
+        
+        print("did cancel")
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        self.icon = image
+        self.iconImage.image = image
+        saveIcon()
+        picker.dismiss(animated:true, completion: nil)
+        
+    }
+    
+
 }
-
-
 
     /*
     // Override to support conditional editing of the table view.

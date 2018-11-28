@@ -74,20 +74,20 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 //    self.pushNotifications.registerDeviceToken(deviceToken)
     print("APNs device token: \(deviceTokenString)")
     
-   if(UserDefaults.standard.string(forKey: "userid") != nil){
-    self.myUserID = Auth.auth().currentUser!.uid
-    
-    let ref = Firestore.firestore().collection("Users").document(self.myUserID)
-    ref.updateData([
-        "token":deviceTokenString
-    ]) { err in
-        if let err = err {
-            print("Error updating document: \(err)")
-        } else {
-            print("Document successfully updated")
-            UserDefaults.standard.set(deviceTokenString, forKey: "token")
+    if(UserDefaults.standard.string(forKey: "userid") != nil){
+        self.myUserID = Auth.auth().currentUser!.uid
+        
+        let ref = Firestore.firestore().collection("Users").document(self.myUserID)
+        ref.updateData([
+            "token":deviceTokenString
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+                UserDefaults.standard.set(deviceTokenString, forKey: "token")
+            }
         }
-    }
     }
 }
         
