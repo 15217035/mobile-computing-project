@@ -116,48 +116,42 @@ class CommentTableViewController: UITableViewController {
         
         
  var token = ""
-//
-//        var message = "\(self.myUsername) send you a message."
         
-        let ref = Firestore.firestore().collection("Users/\(self.bookOwner)").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                   token = document.data()["token"] as! String
+        
+        
+        let ref = Firestore.firestore().collection("Users").document("\(self.bookOwner)").getDocument{ (document, error) in
+            if let document = document, document.exists {
+                if let token1 = document.data()?["token"] {
+                     token = "\(token1)"
+
+                    let parameters: [String: AnyObject] = [
+                        "token" : token as AnyObject ,
+                        "message" : "\(self.myUsername) leave a message in \(self.bookname) chatroom." as AnyObject
+                    ]
+                    print(parameters)
+                    
+                    
+                    let url = "http://158.182.12.165:1337/Message/received"
+                    
+                    Alamofire.request(url, method: .post, parameters: parameters).validate().responseJSON { response in
+                        
+                        print("Result: \(response.result)") // response serialization result
+                        
+                        switch response.result {
+                            
+                        case .success(let value):
+                            
+                            print("JSON: \(value)")     // serialized json response
+                            
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
             }
             }
             
-        
-       print(UserDefaults.standard.string(forKey: "token"))
-//
-        let parameters: [String: AnyObject] = [
-            "token" : token as AnyObject ,
-            "message" : "\(self.myUsername) send you a message." as AnyObject
-        ]
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
-        
-        print(parameters)
-        
-        
-        let url = "http://158.182.12.161:1337/Message/received"
-        
-        Alamofire.request(url, method: .post, parameters: parameters).validate().responseJSON { response in
-        
-            print("Result: \(response.result)") // response serialization result
-            
-            switch response.result {
-                
-            case .success(let value):
-                
-                print("JSON: \(value)")     // serialized json response
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
+
     }
     
     

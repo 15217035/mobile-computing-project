@@ -20,7 +20,7 @@ module.exports = {
         var arr = { message: 'yu@gmail.com send you a message.',
         token: '364E9F4966BCD6E8C7189D238143AB28EA6B9C5BD146280C690EEEEDC5AF46ED' }
 
-        console.log(arr.token)
+        // console.log(arr.token)
         
         console.log(req.body)
         console.log(req.body.message)
@@ -61,7 +61,7 @@ module.exports = {
         notification.expiry = Math.floor(Date.now() / 1000) + 3600;
 
         // Set app badge indicator
-        notification.badge = 3;
+        notification.badge = 1;
 
         // Play ping.aiff sound when the notification is received
         notification.sound = 'ping.aiff';
