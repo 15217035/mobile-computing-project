@@ -413,31 +413,22 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXU-5F-Lwp">
-                                    <rect key="frame" x="194" y="46" width="83" height="22.5"/>
+                                    <rect key="frame" x="194" y="46" width="83" height="23"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="83" id="hMd-BK-2bD"/>
+                                        <constraint firstAttribute="width" constant="83" id="QX6-FJ-Nhh"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nir-vQ-TQa">
-                                    <rect key="frame" x="18" y="184" width="124" height="23"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="6DB-ee-FYb"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMp-Q0-Hqp">
-                                    <rect key="frame" x="194" y="76.5" width="158" height="23"/>
+                                    <rect key="frame" x="194" y="77" width="158" height="23"/>
                                     <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pf3-1J-7qc">
-                                    <rect key="frame" x="194" y="107.5" width="158" height="30"/>
+                                    <rect key="frame" x="194" y="108" width="158" height="30"/>
                                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Upload my icon">
@@ -448,25 +439,38 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1I-xd-rZh">
-                                    <rect key="frame" x="15" y="16" width="130" height="160"/>
+                                    <rect key="frame" x="15" y="16" width="130" height="130"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="130" id="9Ua-cP-Nwe"/>
+                                        <constraint firstAttribute="width" constant="130" id="uae-fg-WSc"/>
+                                    </constraints>
                                 </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY ACCOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nir-vQ-TQa">
+                                    <rect key="frame" x="15" y="176" width="124" height="23"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="23" id="Fxj-uA-25y"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="sMp-Q0-Hqp" secondAttribute="trailing" constant="23" id="2XP-5N-ARO"/>
-                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="trailing" secondItem="pf3-1J-7qc" secondAttribute="trailing" id="91K-O3-VUp"/>
-                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="leading" secondItem="pf3-1J-7qc" secondAttribute="leading" id="CMF-my-ZOH"/>
-                                <constraint firstItem="pf3-1J-7qc" firstAttribute="top" secondItem="sMp-Q0-Hqp" secondAttribute="bottom" constant="8" symbolic="YES" id="Hg2-KT-vi9"/>
-                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="top" secondItem="KQE-3A-o5i" secondAttribute="top" constant="46" id="OIe-j6-WE4"/>
-                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="top" secondItem="lXU-5F-Lwp" secondAttribute="bottom" constant="8" symbolic="YES" id="Qnq-z6-zU7"/>
-                                <constraint firstItem="I1I-xd-rZh" firstAttribute="centerX" secondItem="nir-vQ-TQa" secondAttribute="centerX" id="Xdn-P9-NA4"/>
-                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="leading" secondItem="I1I-xd-rZh" secondAttribute="trailing" constant="49" id="aH3-go-Igz"/>
-                                <constraint firstItem="nir-vQ-TQa" firstAttribute="top" secondItem="I1I-xd-rZh" secondAttribute="bottom" constant="8" symbolic="YES" id="ewj-am-sKr"/>
-                                <constraint firstItem="I1I-xd-rZh" firstAttribute="top" secondItem="KQE-3A-o5i" secondAttribute="top" constant="16" id="fcw-5U-yP1"/>
-                                <constraint firstItem="nir-vQ-TQa" firstAttribute="leading" secondItem="KQE-3A-o5i" secondAttribute="leading" constant="18" id="keg-qt-1Yl"/>
-                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="leading" secondItem="sMp-Q0-Hqp" secondAttribute="leading" id="nYl-a4-Fuv"/>
-                                <constraint firstAttribute="bottom" secondItem="nir-vQ-TQa" secondAttribute="bottom" id="wUl-1q-QZQ"/>
-                                <constraint firstAttribute="trailing" secondItem="lXU-5F-Lwp" secondAttribute="trailing" constant="98" id="xhG-VM-09c"/>
+                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="leading" secondItem="sMp-Q0-Hqp" secondAttribute="leading" id="6lS-kv-KVX"/>
+                                <constraint firstItem="I1I-xd-rZh" firstAttribute="leading" secondItem="nir-vQ-TQa" secondAttribute="leading" id="HN3-Hh-j8M"/>
+                                <constraint firstItem="pf3-1J-7qc" firstAttribute="top" secondItem="sMp-Q0-Hqp" secondAttribute="bottom" constant="8" symbolic="YES" id="KHU-Bd-r3u"/>
+                                <constraint firstItem="nir-vQ-TQa" firstAttribute="top" secondItem="I1I-xd-rZh" secondAttribute="bottom" constant="30" id="M7p-US-AO5"/>
+                                <constraint firstItem="I1I-xd-rZh" firstAttribute="leading" secondItem="KQE-3A-o5i" secondAttribute="leading" constant="15" id="O5a-fb-T7B"/>
+                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="leading" secondItem="pf3-1J-7qc" secondAttribute="leading" id="O5a-lz-Y8c"/>
+                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="trailing" secondItem="pf3-1J-7qc" secondAttribute="trailing" id="RDW-TZ-1nH"/>
+                                <constraint firstAttribute="bottom" secondItem="nir-vQ-TQa" secondAttribute="bottom" constant="8" id="XOC-z6-fNI"/>
+                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="leading" secondItem="I1I-xd-rZh" secondAttribute="trailing" constant="49" id="b2Q-23-tz8"/>
+                                <constraint firstItem="sMp-Q0-Hqp" firstAttribute="top" secondItem="lXU-5F-Lwp" secondAttribute="bottom" constant="8" symbolic="YES" id="cBd-DD-Dxy"/>
+                                <constraint firstItem="I1I-xd-rZh" firstAttribute="top" secondItem="KQE-3A-o5i" secondAttribute="top" constant="16" id="hMb-Jn-4tx"/>
+                                <constraint firstItem="lXU-5F-Lwp" firstAttribute="top" secondItem="KQE-3A-o5i" secondAttribute="top" constant="46" id="lwX-NL-Llg"/>
+                                <constraint firstAttribute="trailing" secondItem="sMp-Q0-Hqp" secondAttribute="trailing" constant="23" id="uu5-is-TF3"/>
+                                <constraint firstAttribute="trailing" secondItem="lXU-5F-Lwp" secondAttribute="trailing" constant="98" id="z46-GS-vg1"/>
                             </constraints>
                         </view>
                         <prototypes>

@@ -11,6 +11,8 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestore
 import Photos
+import Foundation
+
 
 class AccountTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -33,7 +35,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
      let nav = UINavigationController()
     
     var myUserID:String = ""
-    var myUsername:String = UserDefaults.standard.string(forKey: "userid") as! String
+    var myUsername:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,8 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
 
     override func viewWillAppear(_ animated: Bool) {
         
-     
-       
-        if(UserDefaults.standard.string(forKey: "userid") != nil){
+        if(UserDefaults.standard.string(forKey: "userid") != nil) {
+            self.myUsername = UserDefaults.standard.string(forKey: "userid") as! String
             self.userLogin = true
              uploadIconBtn.isHidden = false
             self.myUserID = Auth.auth().currentUser!.uid
@@ -54,7 +55,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
                         let storageRef = storage.reference()
                         let fileName = icon
                         
-                        let ImageRef = storageRef.child("Users")
+                        let ImageRef = storageRef.child("User")
                         
                         let eventImageRef = ImageRef.child(fileName as! String)
                         
@@ -63,7 +64,9 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
                                 print("error: \(error.localizedDescription)")
                             } else {
                                 self.iconImage.image = UIImage(data: data!)!
-                            }
+                                self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
+                                self.iconImage.clipsToBounds = true
+                        }
                         }
                     }
                 }
@@ -71,7 +74,25 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         }else {
             userLogin = false
             uploadIconBtn.isHidden = true
+            let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
+            let storageRef = storage.reference()
+            let fileName = "default.jpg"
+            
+            let ImageRef = storageRef.child("User")
+            
+            let eventImageRef = ImageRef.child(fileName)
+            
+            eventImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                } else {
+                    self.iconImage.image = UIImage(data: data!)!
+                    self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
+                    self.iconImage.clipsToBounds = true
+                }
+            }
         }
+        view.reloadInputViews()
         tableView.reloadData()
     }
     // MARK: - Table view data source
@@ -116,10 +137,11 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         do {
             try firebaseAuth.signOut()
             self.userLogin = false
-            tableView.reloadData()
             let alertController = UIAlertController(title: "Logout", message: "Successfully", preferredStyle: .alert)
+            UserDefaults.standard.set(nil, forKey: "userid")
             alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
+            tableView.reloadData()
            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -169,9 +191,9 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
     
     func saveIcon(){
         
-        let image_set_name:String = "\(self.myUserID) \(self.myUsername).jpg"
+        let image_set_name:String = "\(self.myUsername).jpg"
         
-            let ref = Firestore.firestore().collection("Users").document(myUserID)
+            let ref = Firestore.firestore().collection("Users").document(self.myUserID)
             ref.updateData([
                 "icon":image_set_name
             ]) { err in
@@ -185,7 +207,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         let imageData: Data = UIImagePNGRepresentation(icon)!
 
         let storageRef = Storage.storage().reference()
-        let folderRef = storageRef.child("Book")
+        let folderRef = storageRef.child("User")
         let riversRef = folderRef.child(image_set_name)
         
         // Upload the file to the path "images/rivers.jpg"
