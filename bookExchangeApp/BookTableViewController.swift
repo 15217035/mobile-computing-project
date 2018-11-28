@@ -30,6 +30,7 @@ class BookTableViewController: UITableViewController, UISearchBarDelegate{
         super.viewDidLoad()
        // getBookArr()
         setUpSearchBar()
+         self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -29,7 +29,7 @@ class AddNewBookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -207,5 +207,16 @@ extension AddNewBookViewController: UIImagePickerControllerDelegate, UINavigatio
         
         picker.dismiss(animated:true, completion: nil)
         
+    }
+}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
