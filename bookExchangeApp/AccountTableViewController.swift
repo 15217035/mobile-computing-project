@@ -188,13 +188,35 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
     
     
     @IBAction func uploadIconClicked(_ sender: Any) {
-        let alertController = UIAlertController(title: "Upload my Icon", message: "Choose upload method", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "From Library", style: .default, handler: {action in
-            self.uploadIconByLibrary()}))
         
-        alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: {action in
-            self.uploadIconByCamera(true)}))
-        self.present(alertController, animated: true, completion: nil)
+        
+        
+                let alert = UIAlertController(title: "Upload Icon", message:"Choose upload method", preferredStyle: .actionSheet)
+                let actionOne = UIAlertAction(title:"Photo", style: .default){ (action) in
+                                self.uploadIconByLibrary()
+                    self.present(self, animated: true, completion: nil)
+    
+                }
+    
+    
+        //        //second action
+       let actionTwo = UIAlertAction(title:"Camera", style: .default){ (action) in
+        self.uploadIconByCamera(true)
+        self.present(self, animated: true, completion: nil)
+        //
+        }
+     
+        //Cancel
+        let cancel = UIAlertAction(title:"Cancel", style: .default){  (alertAction: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+            //
+        }
+        
+                alert.addAction(actionOne)
+          alert.addAction(actionTwo)
+          alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
+
     }
     
     func saveIcon(){
@@ -328,6 +350,8 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
         
         self.icon = image
         self.iconImage.image = image
+        self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
+        self.iconImage.clipsToBounds = true
         saveIcon()
         picker.dismiss(animated:true, completion: nil)
         

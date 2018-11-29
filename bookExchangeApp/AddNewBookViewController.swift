@@ -76,6 +76,9 @@ class AddNewBookViewController: UIViewController {
         let folderRef = storageRef.child("Book")
         let riversRef = folderRef.child(image_set_name)
         
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
         // Upload the file to the path "images/rivers.jpg"
         _ = riversRef.putData(imageData, metadata: nil) { metadata, error in
             guard let metadata = metadata else {

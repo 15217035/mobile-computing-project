@@ -27,7 +27,6 @@
 		CD18E16221ACD9C700411B5E /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = CD18E16121ACD9C700411B5E /* message.png */; };
 		CD18E16421ACEB0500411B5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD18E16321ACEB0500411B5E /* GoogleService-Info.plist */; };
 		CD2DD69821AE5B8F0052D167 /* icons8-image-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CD2DD69721AE5B8F0052D167 /* icons8-image-50.png */; };
-		CD2DD69C21AE786F0052D167 /* login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD2DD69B21AE786F0052D167 /* login.jpg */; };
 		CD5123D821ACD538007A96AB /* camera-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123D721ACD538007A96AB /* camera-7.png */; };
 		CD5123DA21ACD55A007A96AB /* home-7.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123D921ACD55A007A96AB /* home-7.png */; };
 		CD5123DC21ACD5E1007A96AB /* man.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5123DB21ACD5E1007A96AB /* man.png */; };
@@ -88,7 +87,6 @@
 		CD18E16121ACD9C700411B5E /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		CD18E16321ACEB0500411B5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD2DD69721AE5B8F0052D167 /* icons8-image-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-image-50.png"; sourceTree = "<group>"; };
-		CD2DD69B21AE786F0052D167 /* login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = login.jpg; path = ../../login.jpg; sourceTree = "<group>"; };
 		CD5123D621ACD52F007A96AB /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-7.png"; sourceTree = "<group>"; };
 		CD5123D721ACD538007A96AB /* camera-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-7.png"; sourceTree = "<group>"; };
 		CD5123D921ACD55A007A96AB /* home-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-7.png"; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				CD5123DB21ACD5E1007A96AB /* man.png */,
-				CD2DD69B21AE786F0052D167 /* login.jpg */,
 				CD5123D721ACD538007A96AB /* camera-7.png */,
 				CD5123D621ACD52F007A96AB /* calendar-7.png */,
 				CD2DD69721AE5B8F0052D167 /* icons8-image-50.png */,
@@ -340,7 +337,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72C5F7E219D8E7E00D3BA08 /* LaunchScreen.storyboard in Resources */,
-				CD2DD69C21AE786F0052D167 /* login.jpg in Resources */,
 				CD5123DE21ACD603007A96AB /* bookmark.png in Resources */,
 				CD5123DA21ACD55A007A96AB /* home-7.png in Resources */,
 				C72C5F7B219D8E7E00D3BA08 /* Assets.xcassets in Resources */,

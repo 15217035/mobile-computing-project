@@ -19,7 +19,10 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookDetail: UILabel!
     
     @IBOutlet weak var bookImage: UIImageView!
-
+    
+    var bookNameString:String = ""
+   var bookDetailsString:String = ""
+ 
     var userLogin = false
     
     var book_id:String = "0001"
@@ -32,7 +35,7 @@ class BookDetailViewController: UIViewController {
         
         let docRef = db.collection("Books").document(book_id)
         
-  
+        self.hideKeyboardWhenTappedAround()
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
@@ -48,6 +51,8 @@ class BookDetailViewController: UIViewController {
                      self.bookAuthor.text = "\(author)"
                      self.bookDetail.text = "\(detail)"
                     
+                    self.bookNameString = "\(name)"
+                    self.bookDetailsString = "\(detail)"
                     // load image from firebase Storage
                     let storage = Storage.storage(url:"gs://bookcomment-5a437.appspot.com")
                     let storageRef = storage.reference()
@@ -91,7 +96,13 @@ class BookDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
+
+    @IBAction func shaerdBtnClicked(_ sender: Any) {
+        
+        let content = "\(self.bookNameString) is an amazing book. \(self.bookDetailsString)"
+        let activityController = UIActivityViewController(activityItems: [content], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
