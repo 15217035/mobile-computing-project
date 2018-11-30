@@ -201,8 +201,8 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
     
         //        //second action
        let actionTwo = UIAlertAction(title:"Camera", style: .default){ (action) in
-        self.uploadIconByCamera(true)
-        self.present(self, animated: true, completion: nil)
+        self.uploadIconByCamera()
+//        self.present(self, animated: true, completion: nil)
         //
         }
      
@@ -310,7 +310,7 @@ class AccountTableViewController: UITableViewController, UIImagePickerController
     }
     
     
-    func uploadIconByCamera(_ sender: Any) {
+    func uploadIconByCamera() {
         
         let status = AVCaptureDevice.authorizationStatus(for: .video)
         switch status{

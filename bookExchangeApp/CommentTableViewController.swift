@@ -124,7 +124,7 @@ class CommentTableViewController: UITableViewController{
                     ]
                     print(parameters)
                     
-                    let url = "http://158.182.12.165:1337/Message/received"
+                    let url = "http://158.182.12.195:1337/Message/received"
                     
                     Alamofire.request(url, method: .post, parameters: parameters).validate().responseJSON { response in
                         

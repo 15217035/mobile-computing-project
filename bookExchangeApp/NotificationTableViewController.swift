@@ -25,6 +25,8 @@ class NotificationTableViewController: UITableViewController {
     var myUserID:String = ""
     var book_id: String = ""
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.myUserID = Auth.auth().currentUser!.uid
@@ -69,7 +71,11 @@ class NotificationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath)
 
-        cell.textLabel?.text = "\(messageArr[indexPath.row].from) leave a message in \(messageArr[indexPath.row].bookname) chatroom"
+        if let label = cell.viewWithTag(401) as? UILabel {
+            label.text  = "\(messageArr[indexPath.row].from) leave a message in \(messageArr[indexPath.row].bookname) chatroom"
+        }
+        
+//        label.text = "\(messageArr[indexPath.row].from) leave a message in \(messageArr[indexPath.row].bookname) chatroom"
 
         return cell
     }
